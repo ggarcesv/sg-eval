@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Empresa Simulada</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="estilos.css">
+	<style type="text/css">
+	body {
+		padding-top: 40px;
+		background-color: #d3c704;
+	}
+	html{
+		background-color: #d3c704;
+	}
+	div.container{
+		background-color: #d3c704;
+		position: absolute;
+	}
+	.uno {
+		position: relative;
+		top: 65px;
+		left: 150%;
+		margin-right: 20%;
+	}
+	h4 {
+		padding-left: 10px;
+		padding-bottom: 10px;
+		margin-top: -9%;
+	}
+	.caja {
+		padding: 15% 10% 15% 13%;
+		position: relative;
+		width:250px;
+		height: 250px;
+		border:1px solid #000;
+		border-radius: 10%;
+		background-color: #fff;
+	}
+	.dos {
+		position: relative;
+		top: -35px;
+		left: 100%;
+	}
+	.tres {
+		margin: 0 20%;
+	}
+	img {
+		position: relative;
+		left: 37%;
+		top: 10%;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<img src="imagenes/logo2.png" class="img-responsive" alt="">
+		<div class="btn-group dos">
+			<buton class="btn btn-col dropdown-toggle" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-home"></span>
+				<span class="caret"></span>
+			</buton>
+			<ul class="dropdown-menu" roles="menu">
+				<li><a href="prueba.html">Inicio</a></li>									
+				<li  class="divider"></li>
+				<li><a href="Https://www.google.com">Google</a></li>
+			</ul>
+		</div>
+		<section class="row">
+			<div class="col-xs-12 col-sm-4 div-log">
+				<div class="form-group uno">
+					<div class="caja">
+						<h4>Acceso a Intranet</h4>
+						<div class="input-group">
+							<span class="input-group-addon sr-only">Usuario</span>
+							<input type="text" class="form-control" placeholder="Usuario">
+						</div>
+						<br>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon sr-only">Password</span>
+								<input type="Password" class="form-control" placeholder="******">
+							</div>
+						</div>
+						<buton class="btn btn-primary tres">Ingresa>></buton>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+	</html>
