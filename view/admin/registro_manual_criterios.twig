@@ -1,0 +1,42 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="flex-center position-ref full-height">
+        {% if result %}
+            <div class="alert alert-success">Criterio Cargado!</div>
+        {% endif %}
+        <div class="container col-md-12">
+            <form method="post">
+                <section class="container">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-9">
+                        <br>
+                        <label for="aspecto">Aspecto</label>
+
+                        <select name="aspecto" id="aspecto" class="form-control" required>
+                            <option value="">Seleccione un Aspecto</option>
+                            {% for aspecto in aspecto %}
+                                <option name="aspecto" id="{{ aspecto.id }}" value="{{ aspecto.id }}">{{ aspecto.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="criterio">Criterio</label>
+                        <input type="text" name="criterio" class="form-control" id="criterio" required>
+                        <br>
+                    </div>
+                    <div class="col-md-1"></div>
+                <div class="row col-md-12">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary btn-block" id="cargar">Cargar</button>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+
+                <br>
+                </section>
+            </form>
+        </div>
+        <div class="container col-xs-12">
+        </div>
+    </div>
+{% endblock %}
