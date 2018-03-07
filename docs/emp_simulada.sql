@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-02-2018 a las 19:03:19
+-- Tiempo de generación: 07-03-2018 a las 16:25:32
 -- Versión del servidor: 10.1.29-MariaDB
 -- Versión de PHP: 7.1.12
 
@@ -210,7 +210,8 @@ INSERT INTO `criterio` (`id`, `nombre`, `aspecto_id`, `created_at`, `updated_at`
 (14, 'Cumplo los plazos establecidos para el desarrollo de las actividades que me son asignadas', 3, '2018-01-26 02:53:19', '2018-01-26 02:53:19'),
 (15, 'Asumo las consecuencias de mis actos dentro del ámbito de las decisiones adoptadas', 3, '2018-01-26 02:53:40', '2018-01-26 02:53:40'),
 (16, 'Mantengo relaciones respetuosas y colaborativas con mis compañeros a través de un lenguaje formal y ', 3, '2018-01-26 02:53:56', '2018-01-26 02:53:56'),
-(17, 'Mantengo Una actitud positiva frente al evaluador y mis compañeros', 3, '2018-01-26 02:54:16', '2018-01-26 02:54:16');
+(17, 'Mantengo Una actitud positiva frente al evaluador y mis compañeros', 3, '2018-01-26 02:54:16', '2018-01-26 02:54:16'),
+(18, 'presentacion formal', 3, '2018-03-01 16:31:56', '2018-03-01 16:31:56');
 
 -- --------------------------------------------------------
 
@@ -686,7 +687,7 @@ ALTER TABLE `aspecto`
 -- AUTO_INCREMENT de la tabla `criterio`
 --
 ALTER TABLE `criterio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `rotacion_alumno`
