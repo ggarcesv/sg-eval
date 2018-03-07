@@ -31,12 +31,12 @@ USE `emp_simulada`;
 --
 
 CREATE TABLE `alumno` (
-  `id` int(11) NOT NULL,
-  `carrera_id` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
+  `carrera_id` int(6) NOT NULL,
   `sede_id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `correo` varchar(45) NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -56,7 +56,7 @@ INSERT INTO `alumno` (`id`, `carrera_id`, `sede_id`, `nombre`, `correo`, `passwo
 --
 
 CREATE TABLE `asignatura` (
-  `id` int(11) NOT NULL,
+  `id` int(6) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -79,12 +79,12 @@ INSERT INTO `asignatura` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `asignatura_seccion` (
   `id` int(11) NOT NULL,
-  `year` int(11) NOT NULL,
-  `semestre` int(11) NOT NULL,
-  `num_seccion` int(11) NOT NULL,
-  `asignatura_id` int(11) NOT NULL,
-  `carrera_id` int(11) NOT NULL,
-  `docente_rut` varchar(11) NOT NULL,
+  `year` int(4) NOT NULL,
+  `semestre` int(2) NOT NULL,
+  `num_seccion` int(2) NOT NULL,
+  `asignatura_id` int(6) NOT NULL,
+  `carrera_id` int(6) NOT NULL,
+  `docente_rut` varchar(8) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -104,9 +104,9 @@ INSERT INTO `asignatura_seccion` (`id`, `year`, `semestre`, `num_seccion`, `asig
 --
 
 CREATE TABLE `aspecto` (
-  `id` int(11) NOT NULL,
+  `id` int(1) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `ponderacion` int(11) NOT NULL,
+  `ponderacion` int(3) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -127,7 +127,7 @@ INSERT INTO `aspecto` (`id`, `nombre`, `ponderacion`, `created_at`, `updated_at`
 --
 
 CREATE TABLE `autoevaluacion_detalle` (
-  `alumno_id` int(11) NOT NULL,
+  `alumno_id` int(10) NOT NULL,
   `rubrica_autoevaluacion_detalle_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -141,12 +141,12 @@ CREATE TABLE `autoevaluacion_detalle` (
 --
 
 CREATE TABLE `bc_alumno` (
-  `id` int(11) NOT NULL,
-  `carrera_id` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
+  `carrera_id` int(6) NOT NULL,
   `sede_id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `correo` varchar(45) NOT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -158,7 +158,7 @@ CREATE TABLE `bc_alumno` (
 --
 
 CREATE TABLE `carrera` (
-  `id` int(11) NOT NULL,
+  `id` int(6) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -183,8 +183,8 @@ INSERT INTO `carrera` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `criterio` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `aspecto_id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `aspecto_id` int(1) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -220,7 +220,7 @@ INSERT INTO `criterio` (`id`, `nombre`, `aspecto_id`, `created_at`, `updated_at`
 --
 
 CREATE TABLE `docente` (
-  `id` varchar(11) NOT NULL,
+  `id` varchar(8) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -246,7 +246,7 @@ INSERT INTO `docente` (`id`, `nombre`, `email`, `password`, `sede_id`, `created_
 --
 
 CREATE TABLE `estado` (
-  `id` int(11) NOT NULL,
+  `id` int(1) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -308,7 +308,7 @@ INSERT INTO `modulo` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `rotacion_alumno` (
   `id` int(11) NOT NULL,
-  `alumno_id` int(11) NOT NULL,
+  `alumno_id` int(10) NOT NULL,
   `rotacion_grupo_id` int(11) NOT NULL,
   `modulo_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -337,7 +337,7 @@ CREATE TABLE `rotacion_grupo` (
   `id` int(11) NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_termino` date DEFAULT NULL,
-  `rotacion_numero` int(11) NOT NULL,
+  `rotacion_numero` int(2) NOT NULL,
   `asignatura_seccion_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -409,7 +409,7 @@ INSERT INTO `rubrica_autoevaluacion` (`id`, `nombre`, `created_at`, `updated_at`
 
 CREATE TABLE `rubrica_autoevaluacion_detalle` (
   `id` int(11) NOT NULL,
-  `estado_id` int(11) NOT NULL,
+  `estado_id` int(1) NOT NULL,
   `criterio_id` int(11) NOT NULL,
   `rubrica_autoevaluacion_id` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -440,7 +440,7 @@ CREATE TABLE `rubrica_detalle` (
   `id` int(11) NOT NULL,
   `criterio_id` int(11) NOT NULL,
   `rubrica_id` int(11) NOT NULL,
-  `estado_id` int(11) NOT NULL,
+  `estado_id` int(1) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -502,7 +502,7 @@ INSERT INTO `sede` (`id`, `nombre`, `direccion`, `telefono`, `created_at`, `upda
 CREATE TABLE `sede_has_carrera` (
   `id` int(11) NOT NULL,
   `sede_id` int(11) NOT NULL,
-  `carrera_id` int(11) NOT NULL,
+  `carrera_id` int(6) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -613,6 +613,7 @@ ALTER TABLE `rotacion_alumno`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_evaluacion_alumno1_idx` (`alumno_id`),
   ADD KEY `fk_evaluacion_alumno_seccion_rotacion_grupo1_idx` (`rotacion_grupo_id`);
+  ADD KEY `fk_grupo_modulo1_idx` (`modulo_id`);
 
 --
 -- Indices de la tabla `rotacion_grupo`
@@ -678,12 +679,6 @@ ALTER TABLE `asignatura_seccion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `aspecto`
---
-ALTER TABLE `aspecto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT de la tabla `criterio`
 --
 ALTER TABLE `criterio`
@@ -724,6 +719,24 @@ ALTER TABLE `rubrica_autoevaluacion_detalle`
 --
 ALTER TABLE `rubrica_detalle`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `modulo`
+--
+ALTER TABLE `modulo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `evaluacion_detalle`
+--
+ALTER TABLE `evaluacion_detalle`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+--
+-- AUTO_INCREMENT de la tabla `sede_has_carrera`
+--
+ALTER TABLE `sede_has_carrera`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -776,6 +789,7 @@ ALTER TABLE `evaluacion_detalle`
 ALTER TABLE `rotacion_alumno`
   ADD CONSTRAINT `fk_evaluacion_alumno1` FOREIGN KEY (`alumno_id`) REFERENCES `alumno` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_evaluacion_alumno_seccion_rotacion_grupo1` FOREIGN KEY (`rotacion_grupo_id`) REFERENCES `rotacion_grupo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_modulo_grupo1` FOREIGN KEY (`modulo_id`) REFERENCES `modulo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `rotacion_grupo`
