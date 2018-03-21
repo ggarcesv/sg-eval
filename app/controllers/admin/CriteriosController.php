@@ -26,7 +26,7 @@ class CriteriosController extends BaseController
 
             if($docente)
             {
-                return $this->render('admin/index.twig', ['docente'=>$docente]);
+                return $this->render('Admin/index.twig', ['docente'=>$docente]);
             }
         }
 
@@ -37,7 +37,7 @@ class CriteriosController extends BaseController
     public function getRegistro_manual()
     {
         $aspecto=Aspecto::all();
-        return $this->render('admin/registro_manual_criterios.twig',[
+        return $this->render('Admin/registro_manual_criterios.twig',[
             'aspecto'=>$aspecto
         ]);
     }
@@ -65,7 +65,7 @@ class CriteriosController extends BaseController
 
         $aspecto=Aspecto::all();
 
-        return $this->render('admin/registro_manual_criterios.twig',[
+        return $this->render('Admin/registro_manual_criterios.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'aspecto'=>$aspecto
@@ -79,7 +79,7 @@ class CriteriosController extends BaseController
         $operacional=Criterio::all()->where('aspecto_id','=',1);
         $actitudinal=Criterio::all()->where('aspecto_id','=',2);
 
-        return $this->render('admin/registro-rubrica.twig',[
+        return $this->render('Admin/registro-rubrica.twig',[
             'modulo'=>$modulos,
             'operacional'=>$operacional,
             'actitudinal'=>$actitudinal
@@ -130,7 +130,7 @@ class CriteriosController extends BaseController
         $operacional=Criterio::all()->where('aspecto_id','=',1);
         $actitudinal=Criterio::all()->where('aspecto_id','=',2);
 
-        return $this->render('admin/registro-rubrica.twig',[
+        return $this->render('Admin/registro-rubrica.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'modulo'=>$modulos,
@@ -144,7 +144,7 @@ class CriteriosController extends BaseController
     {
         $autoevaluacion=Criterio::all()->where('aspecto_id','=',3);
 
-        return $this->render('admin/registro_autoevaluacion.twig',[
+        return $this->render('Admin/registro_autoevaluacion.twig',[
             'autoevaluacion'=>$autoevaluacion,
         ]);
     }
@@ -179,7 +179,7 @@ class CriteriosController extends BaseController
 
         $autoevaluacion=Criterio::all()->where('aspecto_id','=',1);
 
-        return $this->render('admin/registro_autoevaluacion.twig',[
+        return $this->render('Admin/registro_autoevaluacion.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'autoevaluacion'=>$autoevaluacion

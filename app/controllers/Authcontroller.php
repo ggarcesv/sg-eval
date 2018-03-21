@@ -1,14 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: arkurogane
- * Date: 31-12-2017
- * Time: 19:23
- */
 
-
-namespace App\controllers;
-
+namespace App\Controllers;
 
 use App\Models\Docente;
 use App\Models\User;

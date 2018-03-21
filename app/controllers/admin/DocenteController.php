@@ -21,7 +21,7 @@ class DocenteController extends BaseController
 
             if($docente)
             {
-                return $this->render('admin/index.twig', ['docente'=>$docente]);
+                return $this->render('Admin/index.twig', ['docente'=>$docente]);
             }
         }
 
@@ -33,7 +33,7 @@ class DocenteController extends BaseController
     {
 
         $docente=Docente::select('id','nombre','email','sede_id')->get();
-        return $this->render('admin/docente.twig',[
+        return $this->render('Admin/docente.twig',[
             'docente'=>$docente
         ]);
 
@@ -44,7 +44,7 @@ class DocenteController extends BaseController
 
         $sede=Sede::all();
 
-        return $this->render('admin/registro_docente.twig',['sede'=>$sede]);
+        return $this->render('Admin/registro_docente.twig',['sede'=>$sede]);
 
     }
 
@@ -74,7 +74,7 @@ class DocenteController extends BaseController
         }
 
         $sede=Sede::all();
-        return $this->render('admin/registro_docente.twig',[
+        return $this->render('Admin/registro_docente.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'sede'=>$sede
@@ -88,7 +88,7 @@ class DocenteController extends BaseController
 
         $docente=Docente::find($userId);
 
-        return $this->render('admin/mis_datos.twig', ['docente'=>$docente]);
+        return $this->render('Admin/mis_datos.twig', ['docente'=>$docente]);
     }
 
 
@@ -121,7 +121,7 @@ class DocenteController extends BaseController
 
 
 
-        return $this->render('admin/mis_datos.twig', [
+        return $this->render('Admin/mis_datos.twig', [
             'docente'=>$docente,
             'result'=>$result,
             'errors'=>$errors,

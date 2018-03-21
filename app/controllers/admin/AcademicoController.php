@@ -37,7 +37,7 @@ class AcademicoController extends BaseController
         $asignatura=Asignatura::all();
         $sede=Sede::all();
 
-        return $this->render('admin/registro_manual_alumno.twig',[
+        return $this->render('Admin/registro_manual_alumno.twig',[
             'carrera'=>$carrera,
             'asignatura'=>$asignatura,
             'sede'=>$sede
@@ -75,7 +75,7 @@ class AcademicoController extends BaseController
         $carrera=Carrera::all();
         $sede=Sede::all();
 
-        return $this->render('admin/registro_manual_alumno.twig',[
+        return $this->render('Admin/registro_manual_alumno.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'carrera'=>$carrera,
@@ -91,7 +91,7 @@ class AcademicoController extends BaseController
         $docente=Docente::select('id','nombre')->get();
 
 
-        return $this->render('admin/registro_ramo-docente.twig',[
+        return $this->render('Admin/registro_ramo-docente.twig',[
             'carrera'=>$carrera,
             'asignatura'=>$asignatura,
             'docente'=>$docente
@@ -136,7 +136,7 @@ class AcademicoController extends BaseController
         $docente=Docente::select('id','nombre')->get();
 
 
-        return $this->render('admin/registro_ramo-docente.twig',[
+        return $this->render('Admin/registro_ramo-docente.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'carrera'=>$carrera,
@@ -150,7 +150,7 @@ class AcademicoController extends BaseController
         $carrera=Carrera::all();
         $sede=Sede::all();
 
-        return $this->render('admin/registro_masivo_alumno.twig',[
+        return $this->render('Admin/registro_masivo_alumno.twig',[
             'carrera'=>$carrera,
             'sede'=>$sede
         ]);

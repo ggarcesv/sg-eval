@@ -11,7 +11,7 @@ class BaseController
 
     public  function __construct()
     {
-        $loader= new Twig_Loader_Filesystem('../view');
+        $loader= new Twig_Loader_Filesystem('../View');
         $this->templateEngine =new \Twig_Environment($loader,[
        'debug'=>true,
        'cache'=>false

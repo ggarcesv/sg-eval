@@ -47,7 +47,7 @@ class EvaluacionController extends BaseController
             $asigseg[$i]->asignatura_id=$asign->nombre;
         }
 
-        return $this->render('admin/asignar_rotacion.twig',[
+        return $this->render('Admin/asignar_rotacion.twig',[
             'modulo'=>$modulo,
             'alumno'=>$alumno,
             'asign'=>$asigseg
@@ -97,7 +97,7 @@ class EvaluacionController extends BaseController
             $asigseg[$i]->asignatura_id=$asign->nombre;
         }
 
-        return $this->render('admin/asignar_rotacion.twig',[
+        return $this->render('Admin/asignar_rotacion.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'modulo'=>$modulo,
@@ -111,7 +111,7 @@ class EvaluacionController extends BaseController
     {
         $modulo=Modulo::all();
         $rubrica=Rubrica::all();
-     return $this->render('admin/evaluacion.twig',[
+     return $this->render('Admin/evaluacion.twig',[
          'modulo'=>$modulo,
          'rubrica'=>$rubrica
      ]);
