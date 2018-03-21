@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: arkurogane
- * Date: 31-12-2017
- * Time: 15:25
- */
 
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
