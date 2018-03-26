@@ -51,14 +51,15 @@ $router->filter('auth', function (){
 });
 
 $router->controller('/auth', App\Controllers\AuthController::class);
-$router->group(['before'=>'auth'], function ($router){
+
+//$router->group(['before'=>'auth'], function ($router){
 $router->controller('/admin', App\Controllers\Admin\IndexController::class);
 $router->controller('admin/docente',App\Controllers\Admin\DocenteController::class);
 $router->controller('admin/academico',App\Controllers\Admin\AcademicoController::class);
 $router->controller('admin/criterios',App\Controllers\Admin\CriteriosController::class);
 $router->controller('admin/evaluacion',App\Controllers\Admin\EvaluacionController::class);
 
-});
+//});
 $router->controller('/', App\Controllers\IndexController::class);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
