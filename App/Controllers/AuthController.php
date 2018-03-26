@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers{
+namespace App\Controllers;
 use App\Models\Docente;
 use App\Models\User;
 use Sirius\Validation\Validator;
@@ -46,5 +46,4 @@ class AuthController extends BaseController
         unset($_SESSION['userId']);
         header('Location:' . BASE_URL . 'auth/login');
     }
-}
 }
