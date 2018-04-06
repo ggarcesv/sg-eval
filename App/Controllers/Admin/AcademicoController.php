@@ -23,7 +23,7 @@ class AcademicoController extends BaseController
 
             if($docente)
             {
-                return $this->render('admin/index.twig', ['docente'=>$docente]);
+                return $this->render('Admin/index.twig', ['docente'=>$docente]);
             }
         }
 
