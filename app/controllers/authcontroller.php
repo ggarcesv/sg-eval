@@ -3,7 +3,7 @@
 
 namespace app\controllers;
 use app\models\docente;
-use \Sirius\Validation\Validator;
+use Sirius\Validation\Validator;
 
 
 class authcontroller extends basecontroller
