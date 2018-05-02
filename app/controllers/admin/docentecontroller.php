@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace app\controllers\admin;
 
 
-use App\Controllers\BaseController;
-use App\Models\Docente;
-use App\Models\Sede;
-use Sirius\Validation\Validator;
-use Illuminate\Support\Facades\DB;
+use app\controllers\basecontroller;
+use app\models\docente;
+use app\models\sede;
+use \Sirius\Validation\Validator;
+use illuminate\support\Facades\DB;
 
-class DocenteController extends BaseController
+class docentecontroller extends basecontroller
 {
 
     public function getIndex()
@@ -17,11 +17,11 @@ class DocenteController extends BaseController
         if (isset($_SESSION['userId']))
         {
             $userId=$_SESSION['userId'];
-            $docente=Docente::find($userId);
+            $docente=docente::find($userId);
 
             if($docente)
             {
-                return $this->render('Admin/index.twig', ['docente'=>$docente]);
+                return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
 
@@ -32,8 +32,8 @@ class DocenteController extends BaseController
     public function getLista()
     {
 
-        $docente=Docente::select('id','nombre','email','sede_id')->get();
-        return $this->render('Admin/docente.twig',[
+        $docente=docente::select('id','nombre','email','sede_id')->get();
+        return $this->render('admin/docente.twig',[
             'docente'=>$docente
         ]);
 
@@ -42,9 +42,9 @@ class DocenteController extends BaseController
     public function getCreate()
     {
 
-        $sede=Sede::all();
+        $sede=sede::all();
 
-        return $this->render('Admin/registro_docente.twig',['sede'=>$sede]);
+        return $this->render('admin/registro_docente.twig',['sede'=>$sede]);
 
     }
 
@@ -61,7 +61,7 @@ class DocenteController extends BaseController
 
         if ($validator->validate($_POST))
         {
-            $user=new Docente();
+            $user=new docente();
             $user->id=$_POST['rut'];
             $user->nombre=$_POST['nombre'];
             $user->email=$_POST['email'];
@@ -73,8 +73,8 @@ class DocenteController extends BaseController
             $errors=$validator->getMessages();
         }
 
-        $sede=Sede::all();
-        return $this->render('Admin/registro_docente.twig',[
+        $sede=sede::all();
+        return $this->render('admin/registro_docente.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'sede'=>$sede
@@ -86,9 +86,9 @@ class DocenteController extends BaseController
     {
         $userId=$_SESSION['userId'];
 
-        $docente=Docente::find($userId);
+        $docente=docente::find($userId);
 
-        return $this->render('Admin/mis_datos.twig', ['docente'=>$docente]);
+        return $this->render('admin/mis_datos.twig', ['docente'=>$docente]);
     }
 
 
@@ -97,7 +97,7 @@ class DocenteController extends BaseController
         $userId=$_SESSION['userId'];
 
 
-        $docente=Docente::find($userId);
+        $docente=docente::find($userId);
 
         $errors=[];
         $result=false;
@@ -121,7 +121,7 @@ class DocenteController extends BaseController
 
 
 
-        return $this->render('Admin/mis_datos.twig', [
+        return $this->render('admin/mis_datos.twig', [
             'docente'=>$docente,
             'result'=>$result,
             'errors'=>$errors,

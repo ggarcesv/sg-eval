@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Controllers;
-use App\Models\BlogPost;
+namespace app\controllers;
 
-class IndexController extends BaseController
+class indexcontroller extends basecontroller
 {
     public function getIndex()
     {
-
         return $this->render('index.twig');
-
     }
 }

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace app\controllers\admin;
 
 
-use App\Controllers\BaseController;
-use App\Models\Docente;
+use app\controllers\basecontroller;
+use app\models\docente;
 
-class IndexController extends BaseController
+class indexcontroller extends basecontroller
 {
     public function getIndex()
     {
         if (isset($_SESSION['userId']))
         {
             $userId=$_SESSION['userId'];
-            $docente=Docente::find($userId);
+            $docente=docente::find($userId);
 
             if($docente)
             {

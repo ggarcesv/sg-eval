@@ -1,32 +1,32 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace app\controllers\admin;
 
 
-use App\Controllers\BaseController;
-use App\Models\Docente;
-use App\Models\Aspecto;
-use App\Models\Criterio;
-use App\Models\Rubrica;
-use App\Models\Rubrica_autoevaluacion;
-use App\Models\Rubrica_autoevaluacion_detalle;
-use App\Models\Rubrica_detalle;
-use App\Models\Modulo;
-use App\Models\Sede;
-use Sirius\Validation\Validator;
+use app\controllers\basecontroller;
+use app\models\docente;
+use app\models\aspecto;
+use app\models\criterio;
+use app\models\rubrica;
+use app\models\rubrica_autoevaluacion;
+use app\models\rubrica_autoevaluacion_detalle;
+use app\models\rubrica_detalle;
+use app\models\modulo;
+use app\models\sede;
+use \Sirius\Validation\Validator;
 
-class CriteriosController extends BaseController
+class criterioscontroller extends basecontroller
 {
     public function getIndex()
     {
         if (isset($_SESSION['userId']))
         {
             $userId=$_SESSION['userId'];
-            $docente=Docente::find($userId);
+            $docente=docente::find($userId);
 
             if($docente)
             {
-                return $this->render('Admin/index.twig', ['docente'=>$docente]);
+                return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
 
@@ -36,8 +36,8 @@ class CriteriosController extends BaseController
 
     public function getRegistro_manual()
     {
-        $aspecto=Aspecto::all();
-        return $this->render('Admin/registro_manual_criterios.twig',[
+        $aspecto=aspecto::all();
+        return $this->render('admin/registro_manual_criterios.twig',[
             'aspecto'=>$aspecto
         ]);
     }
@@ -54,7 +54,7 @@ class CriteriosController extends BaseController
 
         if ($validator->validate($_POST))
         {
-            $criterio=new Criterio();
+            $criterio=new criterio();
             $criterio->nombre=$_POST['criterio'];
             $criterio->aspecto_id=$_POST['aspecto'];
             $criterio->save();
@@ -63,9 +63,9 @@ class CriteriosController extends BaseController
             $errors=$validator->getMessages();
         }
 
-        $aspecto=Aspecto::all();
+        $aspecto=aspecto::all();
 
-        return $this->render('Admin/registro_manual_criterios.twig',[
+        return $this->render('admin/registro_manual_criterios.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'aspecto'=>$aspecto
@@ -75,11 +75,11 @@ class CriteriosController extends BaseController
 
     public function getRubrica()
     {
-        $modulos=Modulo::all();
-        $operacional=Criterio::all()->where('aspecto_id','=',1);
-        $actitudinal=Criterio::all()->where('aspecto_id','=',2);
+        $modulos=modulo::all();
+        $operacional=criterio::all()->where('aspecto_id','=',1);
+        $actitudinal=criterio::all()->where('aspecto_id','=',2);
 
-        return $this->render('Admin/registro-rubrica.twig',[
+        return $this->render('admin/registro_rubrica.twig',[
             'modulo'=>$modulos,
             'operacional'=>$operacional,
             'actitudinal'=>$actitudinal
@@ -99,22 +99,22 @@ class CriteriosController extends BaseController
 
         if ($validator->validate($_POST))
         {
-            $rubrica= new Rubrica();
+            $rubrica= new rubrica();
             $rubrica->nombre=$_POST['nombre'];
             $rubrica->modulo_id=$_POST['modulo'];
             $rubrica->save();
             $listadoO=$_POST['criterioO'];
             $listadoA=$_POST['criterioA'];
-            $id_rubrica= Rubrica::all() -> last();
+            $id_rubrica= rubrica::all() -> last();
             for ($i=0;$i<sizeof($_POST['criterioO']);$i++){
-                $rubrucad=new Rubrica_detalle();
+                $rubrucad=new rubrica_detalle();
                 $rubrucad->criterio_id=$listadoO[$i];
                 $rubrucad->rubrica_id =$id_rubrica->id;
                 $rubrucad->estado_id =$_POST['modulo'];
                 $rubrucad->save();
             }
             for ($i=0;$i<sizeof($_POST['criterioA']);$i++){
-                $rubrucad=new Rubrica_detalle();
+                $rubrucad=new rubrica_detalle();
                 $rubrucad->criterio_id=$listadoA[$i];
                 $rubrucad->rubrica_id =$id_rubrica->id;
                 $rubrucad->estado_id =$_POST['estado'];
@@ -126,11 +126,11 @@ class CriteriosController extends BaseController
             $errors=$validator->getMessages();
         }
 
-        $modulos=Modulo::all();
-        $operacional=Criterio::all()->where('aspecto_id','=',1);
-        $actitudinal=Criterio::all()->where('aspecto_id','=',2);
+        $modulos=modulo::all();
+        $operacional=criterio::all()->where('aspecto_id','=',1);
+        $actitudinal=criterio::all()->where('aspecto_id','=',2);
 
-        return $this->render('Admin/registro-rubrica.twig',[
+        return $this->render('admin/registro_rubrica.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'modulo'=>$modulos,
@@ -142,9 +142,9 @@ class CriteriosController extends BaseController
 
     public function getAutoevaluacion()
     {
-        $autoevaluacion=Criterio::all()->where('aspecto_id','=',3);
+        $autoevaluacion=criterio::all()->where('aspecto_id','=',3);
 
-        return $this->render('Admin/registro_autoevaluacion.twig',[
+        return $this->render('admin/registro_autoevaluacion.twig',[
             'autoevaluacion'=>$autoevaluacion,
         ]);
     }
@@ -159,13 +159,13 @@ class CriteriosController extends BaseController
 
         if ($validator->validate($_POST))
         {
-            $rubrica= new Rubrica_autoevaluacion();
+            $rubrica= new rubrica_autoevaluacion();
             $rubrica->nombre=$_POST['nombre'];
             $rubrica->save();
             $listadoA=$_POST['criterioA'];
-            $id_rubrica= Rubrica_autoevaluacion::all() -> last();
+            $id_rubrica= rubrica_autoevaluacion::all() -> last();
             for ($i=0;$i<sizeof($_POST['criterioA']);$i++){
-                $rubrucad=new Rubrica_autoevaluacion_detalle();
+                $rubrucad=new rubrica_autoevaluacion_detalle();
                 $rubrucad->criterio_id=$listadoA[$i];
                 $rubrucad->rubrica_autoevaluacion_id =$id_rubrica->id;
                 $rubrucad->estado_id =$_POST['estado'];
@@ -177,9 +177,9 @@ class CriteriosController extends BaseController
             $errors=$validator->getMessages();
         }
 
-        $autoevaluacion=Criterio::all()->where('aspecto_id','=',1);
+        $autoevaluacion=criterio::all()->where('aspecto_id','=',1);
 
-        return $this->render('Admin/registro_autoevaluacion.twig',[
+        return $this->render('admin/registro_autoevaluacion.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'autoevaluacion'=>$autoevaluacion

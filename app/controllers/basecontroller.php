@@ -1,17 +1,17 @@
 <?php
 
 
-namespace App\Controllers;
+namespace app\controllers;
 use Twig_Loader_Filesystem;
 
-class BaseController
+class basecontroller
 {
 
     protected $templateEngine;
 
     public  function __construct()
     {
-        $loader= new Twig_Loader_Filesystem('../View');
+        $loader= new Twig_Loader_Filesystem('../view');
         $this->templateEngine =new \Twig_Environment($loader,[
        'debug'=>true,
        'cache'=>false

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace app\models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rubrica extends Model
+class rubrica extends Model
 {
     protected $table='rubrica';
 }

@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace app\controllers\admin;
 
 
-use App\Controllers\BaseController;
-use App\Models\Docente;
-use App\Models\Carrera;
-use App\Models\Asignatura;
-use App\Models\Alumno;
-use App\Models\Asignatura_seccion;
-use App\Models\Sede;
-use Sirius\Validation\Validator;
+use app\controllers\basecontroller;
+use app\models\docente;
+use app\models\carrera;
+use app\models\asignatura;
+use app\models\alumno;
+use app\models\asignatura_seccion;
+use app\models\sede;
+use \Sirius\Validation\Validator;
 
-class AcademicoController extends BaseController
+class academicocontroller extends basecontroller
 {
     public function getIndex()
     {
         if (isset($_SESSION['userId']))
         {
             $userId=$_SESSION['userId'];
-            $docente=Docente::find($userId);
+            $docente=docente::find($userId);
 
             if($docente)
             {
-                return $this->render('Admin/index.twig', ['docente'=>$docente]);
+                return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
 
@@ -33,11 +33,11 @@ class AcademicoController extends BaseController
 
     public function getRegistro_manual()
     {
-        $carrera=Carrera::all();
-        $asignatura=Asignatura::all();
-        $sede=Sede::all();
+        $carrera=carrera::all();
+        $asignatura=asignatura::all();
+        $sede=sede::all();
 
-        return $this->render('Admin/registro_manual_alumno.twig',[
+        return $this->render('admin/registro_manual_alumno.twig',[
             'carrera'=>$carrera,
             'asignatura'=>$asignatura,
             'sede'=>$sede
@@ -59,7 +59,7 @@ class AcademicoController extends BaseController
 
         if ($validator->validate($_POST))
         {
-            $alumno=new Alumno();
+            $alumno=new alumno();
             $alumno->id=$_POST['matricula'];
             $alumno->carrera_id=$_POST['carrera'];
             $alumno->sede_id=$_POST['sede'];
@@ -72,10 +72,10 @@ class AcademicoController extends BaseController
             $errors=$validator->getMessages();
         }
 
-        $carrera=Carrera::all();
-        $sede=Sede::all();
+        $carrera=carrera::all();
+        $sede=sede::all();
 
-        return $this->render('Admin/registro_manual_alumno.twig',[
+        return $this->render('admin/registro_manual_alumno.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'carrera'=>$carrera,
@@ -86,12 +86,12 @@ class AcademicoController extends BaseController
     public function getRamos()
     {
 
-        $carrera=Carrera::all();
-        $asignatura=Asignatura::all();
-        $docente=Docente::select('id','nombre')->get();
+        $carrera=carrera::all();
+        $asignatura=asignatura::all();
+        $docente=docente::select('id','nombre')->get();
 
 
-        return $this->render('Admin/registro_ramo-docente.twig',[
+        return $this->render('admin/registro_ramo-docente.twig',[
             'carrera'=>$carrera,
             'asignatura'=>$asignatura,
             'docente'=>$docente
@@ -118,7 +118,7 @@ class AcademicoController extends BaseController
 
         if ($validator->validate($_POST))
         {
-            $asig_sec=new Asignatura_seccion();
+            $asig_sec=new asignatura_seccion();
             $asig_sec->year=date('Y');
             $asig_sec->semestre=$semestre;
             $asig_sec->num_seccion=$_POST['seccion'];
@@ -131,12 +131,12 @@ class AcademicoController extends BaseController
             $errors=$validator->getMessages();
         }
 
-        $carrera=Carrera::all();
-        $asignatura=Asignatura::all();
-        $docente=Docente::select('id','nombre')->get();
+        $carrera=carrera::all();
+        $asignatura=asignatura::all();
+        $docente=docente::select('id','nombre')->get();
 
 
-        return $this->render('Admin/registro_ramo-docente.twig',[
+        return $this->render('admin/registro_ramo-docente.twig',[
             'result'=>$result,
             'errors'=>$errors,
             'carrera'=>$carrera,
@@ -147,10 +147,10 @@ class AcademicoController extends BaseController
 
     public function getRegistro_masivo()
     {
-        $carrera=Carrera::all();
-        $sede=Sede::all();
+        $carrera=carrera::all();
+        $sede=sede::all();
 
-        return $this->render('Admin/registro_masivo_alumno.twig',[
+        return $this->render('admin/registro_masivo_alumno.twig',[
             'carrera'=>$carrera,
             'sede'=>$sede
         ]);

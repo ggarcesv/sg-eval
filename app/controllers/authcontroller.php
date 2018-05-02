@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Controllers;
-use App\Models\Docente;
-use App\Models\User;
-use Sirius\Validation\Validator;
 
-class AuthController extends BaseController
+namespace app\controllers;
+use app\models\docente;
+use \Sirius\Validation\Validator;
+
+
+class authcontroller extends basecontroller
 {
     public function getLogin()
     {
@@ -21,7 +22,7 @@ class AuthController extends BaseController
         $validator->add('password','required');
         if ($validator->validate($_POST))
         {
-            $user = Docente::where('email',$_POST['email'])->first();
+            $user = docente::where('email',$_POST['email'])->first();
             if($user)
             {
                 if (password_verify($_POST['password'], $user->password))

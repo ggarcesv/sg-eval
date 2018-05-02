@@ -39,6 +39,7 @@ $route = $_GET['route']?? '/';
 
 
 use Phroute\Phroute\RouteCollector;
+use Phroute\Phroute\Dispatcher;
 
 $router = new RouteCollector();
 
@@ -50,19 +51,19 @@ $router->filter('auth', function (){
     }
 });
 
-$router->controller('/auth', App\Controllers\AuthController::class);
+$router->controller('/auth', app\controllers\authcontroller::class);
 
 $router->group(['before'=>'auth'], function ($router){
-$router->controller('/Admin', App\Controllers\Admin\IndexController::class);
-$router->controller('Admin/docente',App\Controllers\Admin\DocenteController::class);
-$router->controller('Admin/academico',App\Controllers\Admin\AcademicoController::class);
-$router->controller('Admin/criterios',App\Controllers\Admin\CriteriosController::class);
-$router->controller('Admin/evaluacion',App\Controllers\Admin\EvaluacionController::class);
+$router->controller('/admin', app\controllers\admin\indexcontroller::class);
+$router->controller('admin/docente',app\controllers\admin\docentecontroller::class);
+$router->controller('admin/academico',app\controllers\admin\academicocontroller::class);
+$router->controller('admin/criterios',app\controllers\admin\criterioscontroller::class);
+$router->controller('admin/evaluacion',app\controllers\admin\evaluacioncontroller::class);
 });
 
-$router->controller('/', App\Controllers\IndexController::class);
+$router->controller('/', app\controllers\indexcontroller::class);
 
-$dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
+$dispatcher = new Dispatcher($router->getData());
 
 $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $route);
 
