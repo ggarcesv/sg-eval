@@ -10,7 +10,7 @@ use app\models\asignatura;
 use app\models\alumno;
 use app\models\asignatura_seccion;
 use app\models\sede;
-use \Sirius\Validation\Validator;
+use Sirius\Validation\Validator;
 
 class academicocontroller extends basecontroller
 {

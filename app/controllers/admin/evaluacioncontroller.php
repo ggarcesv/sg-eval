@@ -15,7 +15,7 @@ use app\models\modulo;
 use app\models\aspecto;
 use app\models\criterio;
 use app\models\sede;
-use \Sirius\Validation\Validator;
+use Sirius\Validation\Validator;
 
 class evaluacioncontroller extends basecontroller
 {

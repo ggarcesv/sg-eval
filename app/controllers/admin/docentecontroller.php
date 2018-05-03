@@ -6,7 +6,7 @@ namespace app\controllers\admin;
 use app\controllers\basecontroller;
 use app\models\docente;
 use app\models\sede;
-use \Sirius\Validation\Validator;
+use Sirius\Validation\Validator;
 use illuminate\support\Facades\DB;
 
 class docentecontroller extends basecontroller

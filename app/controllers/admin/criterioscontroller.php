@@ -13,7 +13,7 @@ use app\models\rubrica_autoevaluacion_detalle;
 use app\models\rubrica_detalle;
 use app\models\modulo;
 use app\models\sede;
-use \Sirius\Validation\Validator;
+use Sirius\Validation\Validator;
 
 class criterioscontroller extends basecontroller
 {
