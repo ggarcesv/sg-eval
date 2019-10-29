@@ -1,28 +1,23 @@
 <?php
 
-namespace app\controllers\admin;
+namespace App\Controllers\Admin;
 
 
-use app\controllers\basecontroller;
-use app\models\docente;
+use App\Controllers\BaseController;
+use App\Models\Docente;
 
-class indexcontroller extends basecontroller
-{
-    public function getIndex()
-    {
-        if (isset($_SESSION['userId']))
-        {
+class IndexController extends BaseController {
+    
+    public function getIndex() {
+        if (isset($_SESSION['userId'])) {
+
             $userId=$_SESSION['userId'];
             $docente=docente::find($userId);
 
-            if($docente)
-            {
+            if($docente) {
                 return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
-
         header('Location:' . BASE_URL . 'auth/login');
-
     }
-
 }

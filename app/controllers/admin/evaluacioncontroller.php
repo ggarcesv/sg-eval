@@ -1,47 +1,46 @@
 <?php
 
-namespace app\controllers\admin;
+namespace App\Controllers\Admin;
 
 
-use app\controllers\basecontroller;
-use app\models\alumno;
-use app\models\asignatura;
-use app\models\asignatura_seccion;
-use app\models\docente;
-use app\models\rubrica;
-use app\models\rotacion_grupo;
-use app\models\rotacion_alumno;
-use app\models\modulo;
-use app\models\aspecto;
-use app\models\criterio;
-use app\models\sede;
+use App\Controllers\BaseController;
+use App\Models\Alumno;
+use App\Models\Asignatura;
+use App\Models\Asignatura_seccion;
+use App\Models\Docente;
+use App\Models\Rubrica;
+use App\Models\Rotacion_grupo;
+use App\Models\Rotacion_alumno;
+use App\Models\Modulo;
+use App\Models\Aspecto;
+use App\Models\Criterio;
+use App\Models\Sede;
 use Sirius\Validation\Validator;
 
-class evaluacioncontroller extends basecontroller
-{
-    public function getIndex()
-    {
-        if (isset($_SESSION['userId']))
-        {
+class EvaluacionController extends BaseController {
+
+    public function getIndex()  {
+
+        if (isset($_SESSION['userId']))  {
+
             $userId=$_SESSION['userId'];
             $docente=docente::find($userId);
 
-            if($docente)
-            {
+            if($docente)  {
                 return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
-
         header('Location:' . BASE_URL . 'auth/login');
-
     }
 
-    public function getAsignar_rotacion()
-    {
+    public function getAsignar_rotacion()  {
+
         $modulo=modulo::all();
         $alumno=alumno::all();
         $asigseg=asignatura_seccion::all();
-        for ($i=0;$i<sizeof($asigseg);$i++){
+
+        for ($i=0;$i<sizeof($asigseg);$i++) {
+
             $uno=$asigseg[$i]->asignatura_id;
             $asign=asignatura::find($uno);
             $asigseg[$i]->asignatura_id=$asign->nombre;
@@ -54,8 +53,8 @@ class evaluacioncontroller extends basecontroller
         ]);
     }
 
-    public function postAsignar_rotacion()
-    {
+    public function postAsignar_rotacion() {
+
         $errors=[];
         $result=false;
         $validator=new Validator();
@@ -65,8 +64,8 @@ class evaluacioncontroller extends basecontroller
         $validator->add('asign','required');
         $validator->add('modulo','required');
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
+
             $rgrupo= new rotacion_grupo();
             $rgrupo->fecha_inicio=$_POST['inicio'];
             $rgrupo->fecha_termino=$_POST['termino'];
@@ -75,6 +74,7 @@ class evaluacioncontroller extends basecontroller
             $rgrupo->save();
             $alumno=$_POST['grupo'];
             $id_rgrupo= rotacion_grupo::all() -> last();
+
             for ($i=0;$i<sizeof($_POST['grupo']);$i++){
                 $ralumno=new rotacion_alumno();
                 $ralumno->alumno_id=$alumno[$i];
@@ -107,14 +107,14 @@ class evaluacioncontroller extends basecontroller
     }
 
 
-    public function getEvaluar()
-    {
+    public function getEvaluar() {
+
         $modulo=modulo::all();
         $rubrica=rubrica::all();
-     return $this->render('admin/evaluacion.twig',[
-         'modulo'=>$modulo,
-         'rubrica'=>$rubrica
+        
+        return $this->render('admin/evaluacion.twig',[
+            'modulo'=>$modulo,
+            'rubrica'=>$rubrica
      ]);
     }
-
 }

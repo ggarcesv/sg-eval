@@ -1,10 +1,9 @@
 <?php
 
-namespace app\models;
-
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class rubrica_autoevaluacion_detalle extends Model
-{
+class Rubrica_autoevaluacion_detalle extends Model {
+    
     protected $table='rubrica_autoevaluacion_detalle';
 }

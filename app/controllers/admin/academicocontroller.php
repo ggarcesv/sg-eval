@@ -1,28 +1,28 @@
 <?php
 
-namespace app\controllers\admin;
+namespace App\Controllers\Admin;
 
 
-use app\controllers\basecontroller;
-use app\models\docente;
-use app\models\carrera;
-use app\models\asignatura;
-use app\models\alumno;
-use app\models\asignatura_seccion;
-use app\models\sede;
+use App\Controllers\BaseController;
+use App\Models\Docente;
+use App\Models\Carrera;
+use App\Models\Asignatura;
+use App\Models\Alumno;
+use App\Models\Asignatura_seccion;
+use App\Models\Sede;
 use Sirius\Validation\Validator;
 
-class academicocontroller extends basecontroller
-{
-    public function getIndex()
-    {
-        if (isset($_SESSION['userId']))
-        {
+class AcademicoController extends BaseController {
+
+    public function getIndex() {
+
+        if (isset($_SESSION['userId'])) {
+
             $userId=$_SESSION['userId'];
             $docente=docente::find($userId);
 
-            if($docente)
-            {
+            if($docente) {
+
                 return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
@@ -31,8 +31,8 @@ class academicocontroller extends basecontroller
 
     }
 
-    public function getRegistro_manual()
-    {
+    public function getRegistro_manual()  {
+
         $carrera=carrera::all();
         $asignatura=asignatura::all();
         $sede=sede::all();
@@ -44,8 +44,7 @@ class academicocontroller extends basecontroller
         ]);
     }
 
-    public function postRegistro_manual()
-    {
+    public function postRegistro_manual()  {
 
         $errors=[];
         $result=false;
@@ -57,8 +56,8 @@ class academicocontroller extends basecontroller
         $validator->add('email','required');
         $validator->add('email','email');
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
+
             $alumno=new alumno();
             $alumno->id=$_POST['matricula'];
             $alumno->carrera_id=$_POST['carrera'];
@@ -83,8 +82,7 @@ class academicocontroller extends basecontroller
         ]);
     }
 
-    public function getRamos()
-    {
+    public function getRamos() {
 
         $carrera=carrera::all();
         $asignatura=asignatura::all();
@@ -98,8 +96,7 @@ class academicocontroller extends basecontroller
         ]);
     }
 
-    public function postRamos()
-    {
+    public function postRamos() {
         $errors=[];
         $result=false;
         $validator=new Validator();
@@ -110,14 +107,12 @@ class academicocontroller extends basecontroller
         $mes=date('m');
         if ($mes>=01 && $mes<=07){
             $semestre=1;
-        }elseif ($mes>=8 && $mes<=12)
-        {
+        }elseif ($mes>=8 && $mes<=12) {
             $semestre=2;
         }
 
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
             $asig_sec=new asignatura_seccion();
             $asig_sec->year=date('Y');
             $asig_sec->semestre=$semestre;
@@ -145,8 +140,8 @@ class academicocontroller extends basecontroller
         ]);
     }
 
-    public function getRegistro_masivo()
-    {
+    public function getRegistro_masivo() {
+
         $carrera=carrera::all();
         $sede=sede::all();
 
@@ -156,8 +151,7 @@ class academicocontroller extends basecontroller
         ]);
     }
 
-    public function postRegistro_masivo()
-    {
+    public function postRegistro_masivo() {
 
     }
 

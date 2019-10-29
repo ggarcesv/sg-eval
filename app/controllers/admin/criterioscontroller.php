@@ -1,49 +1,42 @@
 <?php
 
-namespace app\controllers\admin;
+namespace App\controllers\admin;
 
 
-use app\controllers\basecontroller;
-use app\models\docente;
-use app\models\aspecto;
-use app\models\criterio;
-use app\models\rubrica;
-use app\models\rubrica_autoevaluacion;
-use app\models\rubrica_autoevaluacion_detalle;
-use app\models\rubrica_detalle;
-use app\models\modulo;
-use app\models\sede;
+use App\Controllers\BaseController;
+use App\Models\Docente;
+use App\Models\Aspecto;
+use App\Models\Criterio;
+use App\Models\Rubrica;
+use App\Models\Rubrica_autoevaluacion;
+use App\Models\Rubrica_autoevaluacion_detalle;
+use App\Models\Rubrica_detalle;
+use App\Models\Modulo;
+use App\Models\Sede;
 use Sirius\Validation\Validator;
 
-class criterioscontroller extends basecontroller
-{
-    public function getIndex()
-    {
-        if (isset($_SESSION['userId']))
-        {
+class CriteriosController extends BaseController {
+    public function getIndex() {
+        if (isset($_SESSION['userId'])) {
             $userId=$_SESSION['userId'];
             $docente=docente::find($userId);
 
-            if($docente)
-            {
+            if($docente) {
                 return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
-
         header('Location:' . BASE_URL . 'auth/login');
-
     }
 
-    public function getRegistro_manual()
-    {
+    public function getRegistro_manual() {
+
         $aspecto=aspecto::all();
         return $this->render('admin/registro_manual_criterios.twig',[
             'aspecto'=>$aspecto
         ]);
     }
 
-    public function postRegistro_manual()
-    {
+    public function postRegistro_manual() {
 
         $errors=[];
         $result=false;
@@ -52,14 +45,16 @@ class criterioscontroller extends basecontroller
         $validator->add('criterio','required');
 
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
+
             $criterio=new criterio();
             $criterio->nombre=$_POST['criterio'];
             $criterio->aspecto_id=$_POST['aspecto'];
             $criterio->save();
             $result=true;
+
         }else{
+
             $errors=$validator->getMessages();
         }
 
@@ -73,8 +68,8 @@ class criterioscontroller extends basecontroller
     }
 
 
-    public function getRubrica()
-    {
+    public function getRubrica() {
+
         $modulos=modulo::all();
         $operacional=criterio::all()->where('aspecto_id','=',1);
         $actitudinal=criterio::all()->where('aspecto_id','=',2);
@@ -88,8 +83,8 @@ class criterioscontroller extends basecontroller
     }
 
 
-    public function postRubrica()
-    {
+    public function postRubrica() {
+
         $errors=[];
         $result=false;
         $validator=new Validator();
@@ -97,8 +92,7 @@ class criterioscontroller extends basecontroller
         $validator->add('estado','required');
         $validator->add('nombre','required');
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
             $rubrica= new rubrica();
             $rubrica->nombre=$_POST['nombre'];
             $rubrica->modulo_id=$_POST['modulo'];
@@ -140,8 +134,7 @@ class criterioscontroller extends basecontroller
 
     }
 
-    public function getAutoevaluacion()
-    {
+    public function getAutoevaluacion() {
         $autoevaluacion=criterio::all()->where('aspecto_id','=',3);
 
         return $this->render('admin/registro_autoevaluacion.twig',[
@@ -149,16 +142,14 @@ class criterioscontroller extends basecontroller
         ]);
     }
 
-    public function postAutoevaluacion()
-    {
+    public function postAutoevaluacion() {
         $errors=[];
         $result=false;
         $validator=new Validator();
         $validator->add('estado','required');
         $validator->add('nombre','required');
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
             $rubrica= new rubrica_autoevaluacion();
             $rubrica->nombre=$_POST['nombre'];
             $rubrica->save();
@@ -184,8 +175,5 @@ class criterioscontroller extends basecontroller
             'errors'=>$errors,
             'autoevaluacion'=>$autoevaluacion
         ]);
-
     }
-
-
 }

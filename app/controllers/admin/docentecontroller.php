@@ -1,26 +1,22 @@
 <?php
 
-namespace app\controllers\admin;
+namespace App\Controllers\Admin;
 
 
-use app\controllers\basecontroller;
-use app\models\docente;
-use app\models\sede;
+use App\Controllers\BaseController;
+use App\Models\docente;
+use App\Models\sede;
 use Sirius\Validation\Validator;
 use illuminate\support\Facades\DB;
 
-class docentecontroller extends basecontroller
-{
+class DocenteController extends BaseController {
 
-    public function getIndex()
-    {
-        if (isset($_SESSION['userId']))
-        {
+    public function getIndex() {
+        if (isset($_SESSION['userId'])) {
             $userId=$_SESSION['userId'];
             $docente=docente::find($userId);
 
-            if($docente)
-            {
+            if($docente) {
                 return $this->render('admin/index.twig', ['docente'=>$docente]);
             }
         }
@@ -29,18 +25,16 @@ class docentecontroller extends basecontroller
 
     }
 
-    public function getLista()
-    {
+    public function getLista() {
 
-        $docente=docente::select('id','nombre','email','sede_id')->get();
+        $docente=docente::select('rut','nombre','email','sede_id')->get();
         return $this->render('admin/docente.twig',[
             'docente'=>$docente
         ]);
 
     }
 
-    public function getCreate()
-    {
+    public function getCreate() {
 
         $sede=sede::all();
 
@@ -49,8 +43,8 @@ class docentecontroller extends basecontroller
     }
 
 
-    public function postCreate()
-    {
+    public function postCreate() {
+
         $errors=[];
         $result=false;
         $validator=new Validator();
@@ -59,8 +53,8 @@ class docentecontroller extends basecontroller
         $validator->add('email','required');
         $validator->add('email','email');
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST))  {
+
             $user=new docente();
             $user->id=$_POST['rut'];
             $user->nombre=$_POST['nombre'];
@@ -82,8 +76,8 @@ class docentecontroller extends basecontroller
 
     }
 
-    public function getDatos()
-    {
+    public function getDatos() {
+
         $userId=$_SESSION['userId'];
 
         $docente=docente::find($userId);
@@ -92,10 +86,9 @@ class docentecontroller extends basecontroller
     }
 
 
-    public function postDatos()
-    {
-        $userId=$_SESSION['userId'];
+    public function postDatos() {
 
+        $userId=$_SESSION['userId'];
 
         $docente=docente::find($userId);
 
@@ -106,8 +99,8 @@ class docentecontroller extends basecontroller
         $validator->add('npassword','required');
         $validator->add('cpassword','required');
 
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
+
             if ($_POST['npassword']==$_POST['cpassword'] && password_verify($_POST['password'], $docente->password)){
 
                 $docente->password=password_hash($_POST['npassword'], PASSWORD_DEFAULT);
@@ -119,16 +112,10 @@ class docentecontroller extends basecontroller
             $errors=$validator->getMessages();
         }
 
-
-
         return $this->render('admin/mis_datos.twig', [
             'docente'=>$docente,
             'result'=>$result,
             'errors'=>$errors,
         ]);
-
     }
-
-
-
 }

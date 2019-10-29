@@ -8,11 +8,8 @@ require_once '../vendor/autoload.php';
 
 session_start();
 
-$baseUrl='';
 $baseDir= str_replace(basename($_SERVER['SCRIPT_NAME']), '',$_SERVER['SCRIPT_NAME']);
-
 $baseUrl='http://'.$_SERVER['HTTP_HOST'].$baseDir;
-
 define('BASE_URL',$baseUrl);
 
 $dotenv= new \Dotenv\Dotenv(__DIR__ . '/..');
@@ -39,32 +36,29 @@ $route = $_GET['route']?? '/';
 
 
 use Phroute\Phroute\RouteCollector;
-use Phroute\Phroute\Dispatcher;
+//use Phroute\Phroute\Dispatcher;
 
 $router = new RouteCollector();
 
 $router->filter('auth', function (){
-    if (!isset($_SESSION['userId']))
-    {
+    if (!isset($_SESSION['userId'])) {
         header('Location:' . BASE_URL . 'auth/login');
         return false;
     }
 });
 
-$router->controller('/auth', app\controllers\authcontroller::class);
+$router->controller('/auth', App\Controllers\AuthController::class);
 
 $router->group(['before'=>'auth'], function ($router){
-$router->controller('/admin', app\controllers\admin\indexcontroller::class);
-$router->controller('admin/docente',app\controllers\admin\docentecontroller::class);
-$router->controller('admin/academico',app\controllers\admin\academicocontroller::class);
-$router->controller('admin/criterios',app\controllers\admin\criterioscontroller::class);
-$router->controller('admin/evaluacion',app\controllers\admin\evaluacioncontroller::class);
+    $router->controller('/',App\Controllers\IndexController::class);
+    $router->controller('/admin',App\Controllers\Admin\IndexController::class);
+    $router->controller('/admin/docente',App\Controllers\Admin\DocenteController::class);
+    $router->controller('/admin/academico',App\Controllers\Admin\AcademicoController::class);
+    $router->controller('/admin/criterios',App\Controllers\Admin\CriteriosController::class);
+    $router->controller('/admin/evaluacion',App\Controllers\Admin\EvaluacionController::class);
 });
 
-$router->controller('/', app\controllers\indexcontroller::class);
-
-$dispatcher = new Dispatcher($router->getData());
-
+$dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $route);
 
 echo $response;

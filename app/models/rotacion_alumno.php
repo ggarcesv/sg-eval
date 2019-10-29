@@ -1,10 +1,9 @@
 <?php
 
-namespace app\models;
-
+namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class rotacion_alumno extends Model
-{
+class Rotacion_alumno extends Model {
+    
     protected $table='rotacion_alumno';
 }

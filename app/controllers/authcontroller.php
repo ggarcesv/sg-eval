@@ -1,12 +1,10 @@
 <?php
 
-
-namespace app\controllers;
-use app\models\docente;
+namespace App\Controllers;
+use App\Models\Docente;
 use Sirius\Validation\Validator;
 
-
-class authcontroller extends basecontroller
+class AuthController extends BaseController
 {
     public function getLogin()
     {
@@ -14,19 +12,17 @@ class authcontroller extends basecontroller
 
     }
 
-    public function postLogin()
-    {
+    public function postLogin() {
         $validator= new Validator();
         $validator->add('email','required');
         $validator->add('email','email');
         $validator->add('password','required');
-        if ($validator->validate($_POST))
-        {
+        if ($validator->validate($_POST)) {
             $user = docente::where('email',$_POST['email'])->first();
             if($user)
             {
-                if (password_verify($_POST['password'], $user->password))
-                {
+                if (password_verify($_POST['password'], $user->password)) {
+                    
                     $_SESSION['userId']=$user->id;
                     header('Location:' . BASE_URL . 'admin/index');
 
@@ -42,8 +38,7 @@ class authcontroller extends basecontroller
             ]);
     }
 
-    public function getLogout()
-    {
+    public function getLogout() {
         unset($_SESSION['userId']);
         header('Location:' . BASE_URL . 'auth/login');
     }
