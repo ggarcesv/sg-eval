@@ -27,7 +27,7 @@ class DocenteController extends BaseController {
 
     public function getLista() {
 
-        $docente=docente::select('rut','nombre','email','sede_id')->get();
+        $docente=docente::select('id','nombre','email','sede_id')->get();
         return $this->render('admin/docente.twig',[
             'docente'=>$docente
         ]);
@@ -48,7 +48,7 @@ class DocenteController extends BaseController {
         $errors=[];
         $result=false;
         $validator=new Validator();
-        $validator->add('rut','required');
+        $validator->add('id','required');
         $validator->add('nombre','required');
         $validator->add('email','required');
         $validator->add('email','email');
@@ -56,7 +56,7 @@ class DocenteController extends BaseController {
         if ($validator->validate($_POST))  {
 
             $user=new docente();
-            $user->id=$_POST['rut'];
+            $user->id=$_POST['id'];
             $user->nombre=$_POST['nombre'];
             $user->email=$_POST['email'];
             $user->password=password_hash($_POST['rut'], PASSWORD_DEFAULT);
