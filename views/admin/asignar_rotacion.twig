@@ -1,0 +1,108 @@
+{% extends "layout.twig" %}
+
+{% block css %}
+    <style rel="stylesheet">
+        .dos{
+            height: 15em;
+            box-sizing: border-box;
+        }
+        #leftValues{
+
+            height: 30em;
+            box-sizing: border-box;
+        }
+        SECTION {
+            padding: 0.3em;
+            background-color: #f0f0f0;
+            overflow: auto;
+        }
+        SECTION > DIV {
+            float: left;
+            padding: 0.3em;
+            display: inline-block;
+        }
+        SECTION > DIV + DIV {
+            width: 4em;
+            text-align: center;
+        }
+        .b{
+            display: inline;
+        }
+        .m{
+            float: left;
+        }
+        .s{
+            width: 24em;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="flex-center position-ref full-height">
+        {% if result %}
+            <div class="alert alert-success">guardado!</div>
+        {% endif %}
+        <form method="post">
+        <div class="container col-md-12">
+            <section class="container">
+                <h2>Rotación alumnos</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <br>
+                        <label for="alumnos">Alumnos</label>
+                        <br>
+                        <table>
+                        {% for alumno in alumno %}
+                            <tr>
+                            <td class="s"><input type="text" name="alumno[]" class="form-control b" id="{{ alumno.id }}" value="{{ alumno.nombre }} " readonly></td>
+                            <td><input type="checkbox" name="grupo[]" value="{{ alumno.id }}"  id="{{ alumno.id }}" ></td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+
+                        <div class="col-md-6 m">
+                            <br>
+                            <div class="row col-md-9">
+                                <br>
+                                <label for="inicio">Fecha Inicio</label>
+                                <input type="date" id="inicio" name="inicio" class="form-control" required>
+                                <label for="termino">Fecha Termino</label>
+                                <input type="date" id="termino" name="termino" class="form-control" required>
+                                <label for="rotacion">Rotación n°</label>
+                                <input type="number" min="1" max="10" id="rotacion" name="rotacion" class="form-control" required>
+                                <br>
+                                <label for="asign">Asignatura-sección</label>
+                                <select name="asign" id="asign" class="form-control" required>
+                                    <option value="">seleccione asignatura-sección</option>
+                                    {% for asign in asign %}
+                                        <option name="asign" id="{{ asign.id }}" value="{{ asign.id }}">{{ asign.asignatura_id }} - {{ asign.num_seccion }}</option>
+                                    {% endfor %}
+                                </select>
+                                <br>
+                                <label for="modulo">Modulo</label>
+                                <select name="modulo" id="modulo" class="form-control" required>
+                                    <option value="">seleccione Modulo</option>
+                                    {% for modulo in modulo %}
+                                        <option name="modulo" id="{{ modulo.id }}" value="{{ modulo.id }}">{{ modulo.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                    <div class="row col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-lg btn-block">Guardar</button>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </section>
+            <br>
+            <br>
+        </div>
+        </form>
+    </div>
+{% endblock %}

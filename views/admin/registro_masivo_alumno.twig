@@ -1,0 +1,50 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="flex-center position-ref full-height">
+        {% if result %}
+            <div class="alert alert-success">Alumno Cargado!</div>
+        {% endif %}
+        <div class="container col-md-10 ">
+            <form method="post">
+                <section class="container">
+                    <div class="row col-md-12">
+                        <div class="col-md-6">
+                            <label for="sede">Sede</label>
+                            <select name="sede" id="sede" class="form-control" required>
+                                <option value="">Seleccione una Sede</option>
+                                {% for sede in sede %}
+                                    <option name="sede" id="{{ sede.id }}" value="{{ sede.id }}">{{ sede.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="carrera">Carrera</label>
+                            <select name="carrera" id="carrera" class="form-control" required>
+                                <option value="">Seleccione una Carrera</option>
+                                {% for carrera in carrera %}
+                                    <option name="carrera" id="{{ carrera.id }}" value="{{ carrera.id }}">{{ carrera.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+                    </div>
+                <br>
+                    <div class="col-md-12">
+                            <br>
+                            <p><label>Selecciona Archivo (Solo formato CSV)</label>
+                                <input type="file" name="alumno_file" /></p>
+                            <br />
+                            <div class="row col-md-12">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary btn-block" id="cargar">Cargar</button>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+                    </div>
+                </section>
+            </form>
+                <?php echo $message; ?>
+                <br>
+{% endblock %}
