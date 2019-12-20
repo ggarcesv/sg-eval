@@ -1,64 +1,60 @@
 <?php
 
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(E_ALL);
+/**
+ * Laravel - A PHP Framework For Web Artisans
+ *
+ * @package  Laravel
+ * @author   Taylor Otwell <taylor@laravel.com>
+ */
 
-require_once '../vendor/autoload.php';
+define('LARAVEL_START', microtime(true));
 
-session_start();
+/*
+|--------------------------------------------------------------------------
+| Register The Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader for
+| our application. We just need to utilize it! We'll simply require it
+| into the script here so that we don't have to worry about manual
+| loading any of our classes later on. It feels great to relax.
+|
+*/
 
-$baseDir= str_replace(basename($_SERVER['SCRIPT_NAME']), '',$_SERVER['SCRIPT_NAME']);
-$baseUrl='http://'.$_SERVER['HTTP_HOST'].$baseDir;
-define('BASE_URL',$baseUrl);
+require __DIR__.'/../vendor/autoload.php';
 
-$dotenv= new \Dotenv\Dotenv(__DIR__ . '/..');
-$dotenv->load();
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let us turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight our users.
+|
+*/
 
-use Illuminate\Database\Capsule\Manager as Capsule;
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-$capsule = new Capsule;
-$capsule->addConnection([
-    'driver'    => 'mysql',
-    'host'      => getenv('DB_HOST'),
-    'database'  => getenv('DB_NAME'),
-    'username'  => getenv('DB_USER'),
-    'password'  => getenv('DB_PASS'),
-    'charset'   => 'utf8',
-    'collation' => 'utf8_unicode_ci',
-    'prefix'    => '',
-]);
+/*
+|--------------------------------------------------------------------------
+| Run The Application
+|--------------------------------------------------------------------------
+|
+| Once we have the application, we can handle the incoming request
+| through the kernel, and send the associated response back to
+| the client's browser allowing them to enjoy the creative
+| and wonderful application we have prepared for them.
+|
+*/
 
-$capsule->setAsGlobal();
-$capsule->bootEloquent();
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
-$route = $_GET['route']?? '/';
+$response = $kernel->handle(
+    $request = Illuminate\Http\Request::capture()
+);
 
+$response->send();
 
-use Phroute\Phroute\RouteCollector;
-//use Phroute\Phroute\Dispatcher;
-
-$router = new RouteCollector();
-
-$router->filter('auth', function (){
-    if (!isset($_SESSION['userId'])) {
-        header('Location:' . BASE_URL . 'auth/login');
-        return false;
-    }
-});
-
-$router->controller('/auth', App\Controllers\AuthController::class);
-
-$router->group(['before'=>'auth'], function ($router){
-    $router->controller('/',App\Controllers\IndexController::class);
-    $router->controller('/admin',App\Controllers\Admin\IndexController::class);
-    $router->controller('/admin/docente',App\Controllers\Admin\DocenteController::class);
-    $router->controller('/admin/academico',App\Controllers\Admin\AcademicoController::class);
-    $router->controller('/admin/criterios',App\Controllers\Admin\CriteriosController::class);
-    $router->controller('/admin/evaluacion',App\Controllers\Admin\EvaluacionController::class);
-});
-
-$dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
-$response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $route);
-
-echo $response;
+$kernel->terminate($request, $response);

@@ -1,1 +1,16 @@
+<<<<<<< HEAD
 .prueba
+=======
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+>>>>>>> 487140cfbbe15fdf2ad3818e5e01ad4a160abb4e
