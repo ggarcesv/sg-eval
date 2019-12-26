@@ -1,84 +1,329 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
-/*
+Route::get('/login', function () {
+    return view('login');
+});
+
+
 // Sede
 
-Route::get('/sede', function () {
-    return view('sede_listar');
+Route::get('/config/sede', function () {
+    return view('SedeListar');
 });
 
-Route::get('/sede/registro', function () {
-    return view('sede_registro');
+Route::get('/config/sede/add', function () {
+    return view('SedeRegistro');
 });
 
-Route::get('/sede/editar', function () {
-    return view('sede_editar');
-});
-
-Route::get('/sede/desactivar', function () {
-    return view('sede_desactivar');
-});
-
-// Privilegio
-
-Route::get('/privilegio', function () {
-    return view('privilegio_listar');
+Route::get('/config/sede/edit/{id}', function () {
+    return view('SedeEditar');
 });
 
 
-Route::get('/privilegio/registro', function () {
-    return view('privilegio_registro');
+// Escuela
+
+Route::get('/config/escuela', function () {
+    return view('EscuelaListar');
 });
 
-Route::get('/privilegio/editar', function () {
-    return view('privilegio_editar');
+Route::get('/config/escuela/add', function () {
+    return view('EscuelaRegistro');
 });
 
-Route::get('/privilegio/desactivar', function () {
-    return view('privilegio_desactivar');
+Route::get('/config/escuela/edit/{id}', function () {
+    return view('EscuelaEditar');
 });
+
 
 // carrera
 
-Route::get('/carrera', function () {
-    return view('carrera_listar');
+Route::get('/config/carrera', function () {
+    return view('CarreraListar');
 });
 
 
-Route::get('/carrera/registro', function () {
-    return view('carrera_registro');
+Route::get('/config/carrera/add', function () {
+    return view('CarreraRegistro');
 });
 
-Route::get('/carrera/editar', function () {
-    return view('carrera_editar');
+Route::get('/config/carrera/edit/{id}', function () {
+    return view('CarreraEditar');
 });
 
-Route::get('/carrera/desactivar', function () {
-    return view('carrera_desactivar');
+
+
+// asignatura
+
+Route::get('/config/asignatura', function () {
+    return view('AsignaturaListar');
 });
 
+
+Route::get('/config/asignatura/add', function () {
+    return view('AsignaturaRegistro');
+});
+
+Route::get('/config/asignatura/edit/{id}', function () {
+    return view('AsignaturaEditar');
+});
+
+// Programa
+
+Route::get('/config/programa', function () {
+    return view('ProgramaListar');
+});
+
+Route::get('/config/programa/{id}', function () {
+    return view('ProgramaListarDetalle');
+});
+
+Route::get('/config/programa/add', function () {
+    return view('ProgramaRegistro');
+});
+
+Route::get('/config/programa/edit/{id}', function () {
+    return view('ProgramaEditar');
+});
+
+
+// Privilegios
+
+Route::get('/config/privilegios', function () {
+    return view('PrivilegioListar');
+});
+
+
+Route::get('/config/privilegios/add', function () {
+    return view('PrivilegioRegistro');
+});
+
+Route::get('/config/privilegios/edit/{id}', function () {
+    return view('PrivilegioEditar');
+});
+
+
+// Roles
+
+Route::get('/config/roles', function () {
+    return view('RolesListar');
+});
+
+
+Route::get('/config/roles/add', function () {
+    return view('RolesRegistro');
+});
+
+Route::get('/config/roles/edit/{id}', function () {
+    return view('RolesEditar');
+});
+
+
+// Modulos
+
+Route::get('/config/modulos', function () {
+    return view('ModulosListar');
+});
+
+
+Route::get('/config/modulos/add', function () {
+    return view('ModulosRegistro');
+});
+
+Route::get('/config/modulos/edit/{id}', function () {
+    return view('ModulosEditar');
+});
+
+
+// Aspecto
+
+Route::get('/config/aspecto', function () {
+    return view('AspectoListar');
+});
+
+
+Route::get('/config/aspecto/add', function () {
+    return view('AspectoRegistro');
+});
+
+Route::get('/config/aspecto/edit/{id}', function () {
+    return view('AspectoEditar');
+});
+
+
+// Criterio
+
+Route::get('/config/criterio', function () {
+    return view('CriterioListar');
+});
+
+
+Route::get('/config/criterio/add', function () {
+    return view('CriterioRegistro');
+});
+
+Route::get('/config/criterio/edit/{id}', function () {
+    return view('CriterioEditar');
+});
+
+
+// Usuarios
+
+Route::get('/curso/usuarios', function () {
+    return view('UsuariosListar');
+});
+
+
+Route::get('/curso/usuarios/add', function () {
+    return view('UsuariosRegistro');
+});
+
+Route::get('/curso/usuarios/edit/{id}', function () {
+    return view('UsuariosEditar');
+});
+
+// Curso
+
+Route::get('/curso/asignaturadocentecurso', function () {
+    return view('CursoListar');
+});
+
+Route::get('/curso/asignaturadocentecurso/{id}', function () {
+    return view('CursoListarDetalle');
+});
+
+Route::get('/curso/asignaturadocentecurso/add', function () {
+    return view('CursoRegistro');
+});
+
+Route::get('/curso/asignaturadocentecurso/edit/{id}', function () {
+    return view('CursoEditar');
+});
+
+Route::get('/curso/asignaturadocentecurso/detalle/edit/{id}', function () {
+    return view('CursoEditarDetalle');
+});
+
+
+// Rubrica
+
+Route::get('/curso/rubrica', function () {
+    return view('RubricaListar');
+});
+
+Route::get('/curso/rubrica/{id}', function () {
+    return view('RubricaListarDetalle');
+});
+
+Route::get('/curso/rubrica/add', function () {
+    return view('RubricaRegistro');
+});
+
+Route::get('/curso/rubrica/edit/{id}', function () {
+    return view('RubricaEditar');
+});
+
+Route::get('/curso/rubrica/detalle/edit/{id}', function () {
+    return view('RubricaEditarDetalle');
+});
+
+
+
+// Autoevaluación
+
+Route::get('/curso/autoevaluacion', function () {
+    return view('AutoevaluacionListar');
+});
+
+Route::get('/curso/autoevaluacion/{id}', function () {
+    return view('AutoevaluacionListarDetalle');
+});
+
+
+Route::get('/curso/autoevaluacion/add', function () {
+    return view('AutoevaluacionRegistro');
+});
+
+Route::get('/curso/autoevaluacion/edit/{id}', function () {
+    return view('AutoevaluacionEditar');
+});
+
+Route::get('/curso/autoevaluacion/detalle/edit/{id}', function () {
+    return view('AutoevaluacionEditarDetalle');
+});
+
+
+// Calendario
+
+Route::get('/curso/calendario', function () {
+    return view('CalendarioListar');
+});
+
+Route::get('/curso/calendario/add', function () {
+    return view('CalendarioRegistro');
+});
+
+Route::get('/curso/calendario/edit/{id}', function () {
+    return view('CalendarioEditar');
+});
+
+ 
+
+// Rotación
+
+Route::get('/curso/rotacion', function () {
+    return view('RotacionListar');
+});
+
+Route::get('/curso/rotacion/add', function () {
+    return view('RotacionRegistro');
+});
+
+
+
+// Evaluación
+
+Route::get('/curso/evaluacion', function () {
+    return view('EvaluacionListar');
+});
+
+Route::get('/curso/evaluacion/add', function () {
+    return view('EvaluacionRegistro');
+});
+
+
+
+// Autoevaluación
+
+Route::get('/perfil/autoevaluacion/add', function () {
+    return view('Autoevaluacion');
+});
+
+
+// Mis Datos
+
+Route::get('/perfil/misdatos', function () {
+    return view('MisDatosListar');
+});
+
+
+// Ayuda
+
+Route::get('/perfil/ayuda', function () {
+    return view('AyudaListar');
+});
+
+
+/*
 
 // carrera/sede
 
 Route::get('/carrera/sede', function () {
     return view('carrera/sede_listar');
 });
-
 
 Route::get('/carrera/sede/registro', function () {
     return view('carrera/sede_registro');
@@ -92,172 +337,4 @@ Route::get('/carrera/sede/desactivar', function () {
     return view('carrera/sede_desactivar');
 });
 
-
-
-// docente
-
-Route::get('/docente', function () {
-    return view('docente_listar');
-});
-
-
-Route::get('/docente/registro', function () {
-    return view('docente_registro');
-});
-
-Route::get('/docente/registro/masivo', function () {
-    return view('docente_registro_masivo');
-});
-
-Route::get('/docente/editar', function () {
-    return view('docente_editar');
-});
-
-Route::get('/docente/desactivar', function () {
-    return view('docente_desactivar');
-});
-
-// alumno
-
-Route::get('/alumno', function () {
-    return view('alumno_listar');
-});
-
-
-Route::get('/alumno/registro', function () {
-    return view('alumno_registro');
-});
-
-Route::get('/alumno/registro/masivo', function () {
-    return view('alumno_registro_masivo');
-});
-
-Route::get('/alumno/editar', function () {
-    return view('alumno_editar');
-});
-
-Route::get('/alumno/desactivar', function () {
-    return view('alumno_desactivar');
-});
-
-
-// asignatura
-
-Route::get('/asignatura', function () {
-    return view('asignatura_listar');
-});
-
-
-Route::get('/asignatura/registro', function () {
-    return view('asignatura_registro');
-});
-
-Route::get('/asignatura/editar', function () {
-    return view('asignatura_editar');
-});
-
-Route::get('/asignatura/desactivar', function () {
-    return view('asignatura_desactivar');
-});
-
-
-
-// seccion
-
-Route::get('/seccion', function () {
-    return view('seccion_listar');
-});
-
-
-Route::get('/seccion/registro', function () {
-    return view('seccion_registro');
-});
-
-Route::get('/seccion/editar', function () {
-    return view('seccion_editar');
-});
-
-Route::get('/seccion/desactivar', function () {
-    return view('seccion_desactivar');
-});
-
-
-// modulo
-
-Route::get('/modulo', function () {
-    return view('modulo_listar');
-});
-
-
-Route::get('/modulo/registro', function () {
-    return view('modulo_registro');
-});
-
-Route::get('/modulo/editar', function () {
-    return view('modulo_editar');
-});
-
-Route::get('/modulo/desactivar', function () {
-    return view('modulo_desactivar');
-});
-
-
-// rotacion
-
-Route::get('/rotacion', function () {
-    return view('rotacion_listar');
-});
-
-
-Route::get('/rotacion/registro', function () {
-    return view('rotacion_registro');
-});
-
-Route::get('/rotacion/editar', function () {
-    return view('rotacion_editar');
-});
-
-Route::get('/rotacion/desactivar', function () {
-    return view('rotacion_desactivar');
-});
-
-
-// rotacion/alumno
-
-Route::get('/rotacion/alumno', function () {
-    return view('rotacion/alumno_listar');
-});
-
-
-Route::get('/rotacion/alumno/registro', function () {
-    return view('rotacion/alumno_registro');
-});
-
-Route::get('/rotacion/alumno/editar', function () {
-    return view('rotacion/alumno_editar');
-});
-
-Route::get('/rotacion/alumno/desactivar', function () {
-    return view('rotacion/alumno_desactivar');
-});
-
-
-// rubrica
-
-Route::get('/rubrica', function () {
-    return view('rubrica_listar');
-});
-
-
-Route::get('/rubrica/registro', function () {
-    return view('rubrica_registro');
-});
-
-Route::get('/rubrica/editar', function () {
-    return view('rubrica_editar');
-});
-
-Route::get('/rubrica/desactivar', function () {
-    return view('rubrica_desactivar');
-});
 */
