@@ -1,20 +1,20 @@
 <?php
 
 Route::get('/', function () {
-    return view('main');
+    return view('Main');
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('Login');
 });
 
 
 // Sede
+Route::resource('/config/sede', 'SedeController');
 
-Route::get('/config/sede', function () {
-    return view('SedeListar');
-});
+// Route::get('/config/sede', 'SedeController@index')
 
+/*
 Route::get('/config/sede/add', function () {
     return view('SedeRegistro');
 });
@@ -22,7 +22,7 @@ Route::get('/config/sede/add', function () {
 Route::get('/config/sede/edit/{id}', function () {
     return view('SedeEditar');
 });
-
+*/
 
 // Escuela
 
@@ -90,51 +90,51 @@ Route::get('/config/programa/edit/{id}', function () {
 });
 
 
-// Privilegios
+// Privilegio
 
-Route::get('/config/privilegios', function () {
+Route::get('/config/privilegio', function () {
     return view('PrivilegioListar');
 });
 
 
-Route::get('/config/privilegios/add', function () {
+Route::get('/config/privilegio/add', function () {
     return view('PrivilegioRegistro');
 });
 
-Route::get('/config/privilegios/edit/{id}', function () {
+Route::get('/config/privilegio/edit/{id}', function () {
     return view('PrivilegioEditar');
 });
 
 
-// Roles
+// Rol
 
-Route::get('/config/roles', function () {
-    return view('RolesListar');
+Route::get('/config/rol', function () {
+    return view('RolListar');
 });
 
 
-Route::get('/config/roles/add', function () {
-    return view('RolesRegistro');
+Route::get('/config/rol/add', function () {
+    return view('RolRegistro');
 });
 
-Route::get('/config/roles/edit/{id}', function () {
-    return view('RolesEditar');
-});
-
-
-// Modulos
-
-Route::get('/config/modulos', function () {
-    return view('ModulosListar');
+Route::get('/config/rol/edit/{id}', function () {
+    return view('RolEditar');
 });
 
 
-Route::get('/config/modulos/add', function () {
-    return view('ModulosRegistro');
+// Modulo
+
+Route::get('/config/modulo', function () {
+    return view('ModuloListar');
 });
 
-Route::get('/config/modulos/edit/{id}', function () {
-    return view('ModulosEditar');
+
+Route::get('/config/modulo/add', function () {
+    return view('ModuloRegistro');
+});
+
+Route::get('/config/modulo/edit/{id}', function () {
+    return view('ModuloEditar');
 });
 
 
@@ -170,20 +170,20 @@ Route::get('/config/criterio/edit/{id}', function () {
 });
 
 
-// Usuarios
+// Usuario
 
-Route::get('/curso/usuarios', function () {
-    return view('UsuariosListar');
+Route::get('/curso/usuario', function () {
+    return view('UsuarioListar');
 });
 
-
-Route::get('/curso/usuarios/add', function () {
-    return view('UsuariosRegistro');
+Route::get('/curso/usuario/add', function () {
+    return view('UsuarioRegistro');
 });
 
-Route::get('/curso/usuarios/edit/{id}', function () {
-    return view('UsuariosEditar');
+Route::get('/curso/usuario/edit/{id}', function () {
+    return view('UsuarioEditar');
 });
+
 
 // Curso
 
@@ -298,7 +298,7 @@ Route::get('/curso/evaluacion/add', function () {
 
 // Autoevaluación
 
-Route::get('/perfil/autoevaluacion/add', function () {
+Route::get('/perfil/autoevaluacion', function () {
     return view('Autoevaluacion');
 });
 
