@@ -3,46 +3,58 @@
 
 <title>@yield('title', 'Sede')</title>
 
-
 @section('header')
     <h2>Configuración Sede</h2>
 @stop
 
 @section('content')
-    <a href="/config/sede/create" class="btn btn-primary">Add new</a>
-    <table class="table table-bordered table-responsive" style="margin-top: 10px;">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>dirección</th>
-                <th>Telefono</th>
-                <th>Estado</th>
-                <th colspan="2">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($sede as $sede)
-            <tr>
-                <td>{{ $sede->id }}</td>
-                <td>{{ $sede->nombre }}</td>
-                <td>{{ $sede->direccion }}</td>
-                <td>{{ $sede->telefono }}</td>
-                @if ($sede->estado == 1)<td>Habilitado</td>
-                @else <td>Deshabilitado</td>
-                @endif
-                <td>
-                    <a href="{{ route('sede.edit', $sede->id) }}" class="btn btn-success">Edit</a>
-                </td>
-                <td>
-                    {!! Form::open(['method'=>'delete', 'route'=>['sede.destroy', $sede->id]]) !!}
-                    {!! Form::submit('Delete', ['class'=>'btn btn-danger', 'onclick'=>'return confirm("¿Quieres eliminar este registro?")']) !!}
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
 
-    {{ $sede->links() }}
+    {!! Form::open(['url'=>'config/sede','class'=>'form-horizontal']) !!}
+        
+        <div class="form-group">
+            {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('id')?$errors->first('id'):'' !!}
+            </div>
+        </div>
+        
+        <div class="form-group">
+            {!! Form::label('nombre', 'Nombre', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('direccion', 'Dirección', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::text('direccion', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('direccion')?$errors->first('direccion'):'' !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('telefono', 'Telefono', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::text('telefono', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('telefono')?$errors->first('telefono'):'' !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::select('estado', array('1' => 'Habilitado', '0' => 'Deshabilitado'),['class'=>'form-control']) !!}
+                {!! $errors->has('estado')?$errors->first('estado'):'' !!}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                {!! Form::submit('Save', ['class'=>'btn btn-primary']) !!}
+            </div>
+        </div>
+    {!! Form::close() !!}
 @stop

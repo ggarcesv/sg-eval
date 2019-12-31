@@ -31,16 +31,12 @@ class SedeController extends Controller {
 
         $sede = $request->all();
         sede::create($sede);
-        return redirect('sede');
+        return redirect('config/sede');
 
-    }
-
-    public function show($id) {
-        
     }
 
     public function edit($id) {
-
+        
         $sede = sede::find($id);
         return view('sede.edit', compact('sede'));
     }
@@ -57,14 +53,7 @@ class SedeController extends Controller {
         $sede = sede::find($id);
         $sedeUpdate = $request->all();
         $sede->update($sedeUpdate);
-        return redirect('sede');    
-    }
-
-    public function destroy($id) {
-
-        $sede = sede::find($id);
-        $sede->delete();
-        return redirect('sede');
+        return redirect('/config/sede');    
     }
 
 }
