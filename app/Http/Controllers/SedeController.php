@@ -45,6 +45,7 @@ class SedeController extends Controller {
     public function update(Request $request, $id) {
 
         $this->validate($request, [
+            'id'=>'Required',
             'nombre'=>'Required',
             'direccion'=>'Required',
             'telefono'=>'Required',
