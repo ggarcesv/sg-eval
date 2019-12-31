@@ -10,19 +10,23 @@
 
 @section('content')
 
-<form method="Post" action="">
+<?PHP
 
-$request = $_POST['idSelec']; 
+    if(!empty($_GET['idSelec'])) {
 
-if($request=='') {
+        $idSelec=$_GET['idSelec'];
+        
+        header('Location: /config/sede/'.$idSelec.'/edit');
 
-}else{
-    return redirect('/config/sede/{$request}/edit'); 
-}
-   
+        exit();
+    }
+?>
 
+<form method="GET" action="">
+@csrf
+@if (empty($idSelec))
 
-    <table class="table table-bordered table-responsive" style="margin-top: 10px;">
+<table class="table table-bordered table-responsive" style="margin-top: 10px;">
         <thead>
             <tr>
                 <th>Id</th>
@@ -44,7 +48,7 @@ if($request=='') {
                     @else <td>Inactivo</td>
                     @endif
                     <td>
-                    {{ Form::radio('idSelec', '$sede->id') }}  
+                    {{ Form::radio('idSelec', $sede->id) }}  
                     </td>
                 </tr>
             @endforeach
@@ -56,5 +60,6 @@ if($request=='') {
      </form>
 
     {{ $sedes->links() }}
+    @stop
 
-@stop
+@endif
