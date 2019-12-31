@@ -26,6 +26,9 @@ Route::get('/config/sede/edit/{id}', function () {
 
 // Escuela
 
+Route::resource('/config/escuela', 'EscuelaController');
+
+/*
 Route::get('/config/escuela', function () {
     return view('EscuelaListar');
 });
@@ -38,6 +41,7 @@ Route::get('/config/escuela/edit/{id}', function () {
     return view('EscuelaEditar');
 });
 
+*/
 
 // carrera
 
