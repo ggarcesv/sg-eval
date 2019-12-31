@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\sede;
+use App\Sede;
 
 class SedeController extends Controller {
 
     public function index() {
 
-        $sedes = sede::orderBy('Id', 'asc')->paginate(10);
+        $sedes = Sede::orderBy('Id', 'asc')->paginate(10);
         return view('sede.index', compact('sedes'));
 
     }
@@ -23,6 +23,7 @@ class SedeController extends Controller {
     public function store(Request $request) {
        
         $this->validate($request, [
+            'id'=>'Required',
             'nombre'=>'Required',
             'direccion'=>'Required',
             'telefono'=>'Required',
@@ -30,14 +31,14 @@ class SedeController extends Controller {
         ]);
 
         $sede = $request->all();
-        sede::create($sede);
+        Sede::create($sede);
         return redirect('config/sede');
 
     }
 
     public function edit($id) {
-        
-        $sede = sede::find($id);
+
+        $sede = Sede::find($id);
         return view('sede.edit', compact('sede'));
     }
 
@@ -50,7 +51,7 @@ class SedeController extends Controller {
             'estado'=>'Required'
         ]);
 
-        $sede = sede::find($id);
+        $sede = Sede::find($id);
         $sedeUpdate = $request->all();
         $sede->update($sedeUpdate);
         return redirect('/config/sede');    
