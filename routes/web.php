@@ -67,10 +67,12 @@ Route::get('/config/carrera/edit/{id}', function () {
 
 // asignatura
 
+Route::resource('/config/asignatura', 'AsignaturaController');
+
+/*
 Route::get('/config/asignatura', function () {
     return view('AsignaturaListar');
 });
-
 
 Route::get('/config/asignatura/add', function () {
     return view('AsignaturaRegistro');
@@ -79,6 +81,7 @@ Route::get('/config/asignatura/add', function () {
 Route::get('/config/asignatura/edit/{id}', function () {
     return view('AsignaturaEditar');
 });
+*/
 
 // Programa
 
