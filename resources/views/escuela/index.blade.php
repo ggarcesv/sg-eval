@@ -5,7 +5,7 @@
 
 
 @section('header')
-    <h2>Configuración Escuela</h2>
+    <h2>Configuración Escuelas</h2>
 @stop
 
 @section('content')

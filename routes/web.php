@@ -85,6 +85,9 @@ Route::get('/config/asignatura/edit/{id}', function () {
 
 // Programa
 
+Route::resource('/config/programa', 'ProgramaController');
+
+/*
 Route::get('/config/programa', function () {
     return view('ProgramaListar');
 });
@@ -100,7 +103,7 @@ Route::get('/config/programa/add', function () {
 Route::get('/config/programa/edit/{id}', function () {
     return view('ProgramaEditar');
 });
-
+*/
 
 // Privilegio
 

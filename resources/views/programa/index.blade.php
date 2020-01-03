@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @include('partials.Navbar')
 
-<title>@yield('title', 'Asignatura')</title>
+<title>@yield('title', 'Programa')</title>
 
 
 @section('header')
-    <h2>Configuración Asignaturas</h2>
+    <h2>Configuración Programa</h2>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
 
         $idSelec=$_GET['idSelec'];
         
-        header('Location: /config/asignatura/'.$idSelec.'/edit');
+        header('Location: /config/programa/'.$idSelec.'/edit');
 
         exit();
     }
@@ -30,21 +30,26 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nombre</th>
+                <th>Asignatura</th>
+                <th>Nombre Programa</th>
+                <th>Año</th>
                 <th>Estado</th>
                 <th>Selección</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($asignaturas as $asignatura)
+            @foreach($programas as $programa)
                 <tr>
-                    <td>{{ $asignatura->id }}</td>
-                    <td>{{ $asignatura->nombre }}</td>
-                    @if ($asignatura->estado == 1)<td>Activo</td>
+                    <td>{{ $programa->id }}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__asignaturas')->select('nombre')->where('id', $programa->asignaturaId)->get() )}}</td>
+
+                    <td>{{ $programa->nombre }}</td>
+                    <td>{{ $programa->year }}</td>
+                    @if ($programa->estado == 1)<td>Activo</td>
                     @else <td>Inactivo</td>
                     @endif
                     <td>
-                    {{ Form::radio('idSelec', $asignatura->id) }}  
+                    {{ Form::radio('idSelec', $programa->id) }}  
                     </td>
                 </tr>
             @endforeach
@@ -52,10 +57,10 @@
     </table>
    
     <a href="{{ route('asignatura.create') }}" class="btn btn-primary">Agregar</a>
-    <input type="submit" value="Editar" class="btn btn-success">
+    <input type="submit" value="Ver" class="btn btn-success">
      </form>
 
-    {{ $asignaturas->links() }}
+    {{ $programas->links() }}
     @stop
 
 @endif

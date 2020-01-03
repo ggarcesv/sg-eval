@@ -1,14 +1,28 @@
+@extends('partials.Navbar')
+
+<title>@yield('title', 'Programa')</title>
+
+
+
+
+
+
+
+
+
+
+
 @extends('layouts.master')
 @include('partials.Navbar')
 
-<title>@yield('title', 'Carrera')</title>
+<title>@yield('title', 'Asignatura')</title>
 
 @section('header')
-    <h2>Configuración Carreras</h2>
+    <h2>Configuración Asignatura</h2>
 @stop
 
 @section('content')
-    {!! Form::model($carrera, ['route'=>['carrera.update', $carrera->id], 'method'=>'PATCH', 'class'=>'form-horizontal']) !!}
+    {!! Form::model($asignatura, ['route'=>['asignatura.update', $asignatura->id], 'method'=>'PATCH', 'class'=>'form-horizontal']) !!}
         
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
@@ -23,14 +37,6 @@
             <div class="col-md-3">
                 {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {!! Form::label('escuela', 'Escuela', ['class'=>'control-label col-md-2']) !!}
-            <div class="col-md-3">
-                {!! Form::select('escuela_id', $escuelaList, ['class'=>'form-control']) !!} 
-                {!! $errors->has('escuela_id')?$errors->first('escuela'):'' !!}
             </div>
         </div>
 
