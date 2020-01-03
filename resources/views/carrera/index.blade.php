@@ -41,7 +41,8 @@
                 <tr>
                     <td>{{ $carrera->id }}</td>
                     <td>{{ $carrera->nombre }}</td>
-                    <td>{{ $r = DB::table('saesa__escuelas')->select('nombre as ')->where('id', $carrera->escuela_id)->get() }}</td>
+                    
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__escuelas')->select('nombre')->where('id', $carrera->escuela_id)->get() )}}</td>
                     @if ($carrera->estado == 1)<td>Activo</td>
                     @else <td>Inactivo</td>
                     @endif

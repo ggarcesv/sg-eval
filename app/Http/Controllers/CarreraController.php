@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Carrera;
-use App\Escuela;
 
 
 class CarreraController extends Controller {
