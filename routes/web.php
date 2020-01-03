@@ -45,6 +45,10 @@ Route::get('/config/escuela/edit/{id}', function () {
 
 // carrera
 
+Route::resource('/config/carrera', 'CarreraController');
+
+/*
+
 Route::get('/config/carrera', function () {
     return view('CarreraListar');
 });
@@ -58,6 +62,7 @@ Route::get('/config/carrera/edit/{id}', function () {
     return view('CarreraEditar');
 });
 
+*/
 
 
 // asignatura
