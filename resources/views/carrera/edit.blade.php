@@ -27,6 +27,14 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('escuela', 'Escuela', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::select('escuela_id', $escuelaList, ['class'=>'form-control']) !!} 
+                {!! $errors->has('escuela_id')?$errors->first('escuela'):'' !!}
+            </div>
+        </div>
+
+        <div class="form-group">
             {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
                 {!! Form::select('estado', array('1' => 'Habilitado', '0' => 'Deshabilitado'),['class'=>'form-control']) !!}

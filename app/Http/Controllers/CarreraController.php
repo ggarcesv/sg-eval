@@ -5,25 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Carrera;
-
+use App\Escuela;
 
 class CarreraController extends Controller {
 
     public function index() {
 
-        $carreras = Carrera::orderBy('Id', 'asc')->paginate(10);
+        $carreras = Carrera::orderBy('id', 'asc')->paginate(10);
 
         return view('carrera.index', compact('carreras'));
 
     }
 
-
-
-
-
     public function create() {
 
-        return view('carrera.create');
+        $escuelaList = Escuela::all()->where('estado', 1) -> pluck('nombre','id');
+
+        return view('carrera.create', compact('escuelaList'));
 
     }
 
@@ -32,8 +30,11 @@ class CarreraController extends Controller {
         $this->validate($request, [
             'id'=>'Required',
             'nombre'=>'Required',
-            'estado'=>'Required'
+            'estado'=>'Required',
+            'escuela_id'=>'Required'
+
         ]);
+
 
         $carrera = $request->all();
         Carrera::create($carrera);
@@ -44,7 +45,11 @@ class CarreraController extends Controller {
     public function edit($id) {
 
         $carrera = Carrera::find($id);
-        return view('carrera.edit', compact('carrera'));
+
+        $escuelaList = Escuela::all()->where('estado', 1) -> pluck('nombre','id');
+        
+
+        return view('carrera.edit', compact('carrera','escuelaList'));
     }
 
     public function update(Request $request, $id) {
@@ -52,7 +57,8 @@ class CarreraController extends Controller {
         $this->validate($request, [
             'id'=>'Required',
             'nombre'=>'Required',
-            'estado'=>'Required'
+            'estado'=>'Required',
+            'escuela_id'=>'Required'
         ]);
 
         $carrera = Carrera::find($id);

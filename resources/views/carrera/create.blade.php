@@ -27,21 +27,20 @@
             </div>
         </div>
 
+        <div class="form-group">
+            {!! Form::label('escuela', 'Escuela', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::select('escuela_id', $escuelaList, null, ['placeholder' => 'Seleccione'], ['class'=>'form-control']) !!} 
+                {!! $errors->has('escuela_id')?$errors->first('escuela'):'' !!}
+            </div>
+        </div>
+
 
         <div class="form-group">
             {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
                 {!! Form::select('estado', array('1' => 'Habilitado', '0' => 'Deshabilitado'),['class'=>'form-control']) !!}
                 {!! $errors->has('estado')?$errors->first('estado'):'' !!}
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            {!! Form::label('escuela_id', 'Escuela_Id', ['class'=>'control-label col-md-2']) !!}
-            <div class="col-md-3">
-                {!! Form::select('escuela_id', array('0' => 'Seleccione', '1' => 'Escuela 1','2' => 'Escuela 2'), ['class'=>'form-control']) !!}
-                {!! $errors->has('escuela_id')?$errors->first('escuela_id'):'' !!}
             </div>
         </div>
 
