@@ -86,6 +86,9 @@ Route::get('/config/asignatura/edit/{id}', function () {
 // Programa
 
 Route::resource('/config/programa', 'ProgramaController');
+Route::get('/config/programa/{id}/detalle', 'ProgramaController@detalle');
+
+
 
 /*
 Route::get('/config/programa', function () {

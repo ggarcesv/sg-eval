@@ -8,6 +8,6 @@ class Unidad extends Model {
 
     protected $table = 'saesa__unidades';
 
-    protected $fillable = ['id','nombre','estado','programa_id'];
+    protected $fillable = ['id','nombre','descripcion','estado','programa_id'];
 
 }

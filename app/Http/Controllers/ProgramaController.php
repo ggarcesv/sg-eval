@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Programa;
 use App\Unidad;
-use App\UnidadDetalle;
+use App\Asignatura;
 
 
 class ProgramaController extends Controller {
@@ -19,13 +19,34 @@ class ProgramaController extends Controller {
 
     }
 
+    public function detalle($id) {
 
+        $programa = Programa::find($id);
+        $unidadesList = Unidad::all()->where('estado', 1)->where('programa_id', $id);
+        //$unidadesList = Unidad::all()->where('estado', 1) -> where('id', unidad->id);
+
+        return view('programa.detalle', compact('programa','unidadesList'));
+
+    }
+
+
+
+/*
+    public function detalle($id) {
+
+        $programa = Programa::find($id);
+
+        //$asignaturaList = Asignatura::all()->where('estado', 1) -> pluck('nombre','id');
+
+        return view('programa.detalle', compact('programa'));
+
+    }
+
+*/
     public function create() {
 
-        //$escuelaList = Escuela::all()->where('estado', 1) -> pluck('nombre','id');
-       // return view('programa.create', compact('escuelaList'));
-
-       return view('programa.create');
+       $asignaturaList = Asignatura::all()->where('estado', 1) -> pluck('nombre','id');
+       return view('programa.create', compact('asignaturaList'));
 
     }
 
@@ -48,13 +69,10 @@ class ProgramaController extends Controller {
     public function edit($id) {
 
         $programa = Programa::find($id);
+        $asignaturaList = Asignatura::all()->where('estado', 1) -> pluck('nombre','id');
+        $unidadesList = Unidad::all()->where('estado', 1)->where('programa_id', $id);
 
-        //$escuelaList = Escuela::all()->where('estado', 1) -> pluck('nombre','id');
-        
-
-        //return view('carrera.edit', compact('carrera','escuelaList'));
-
-
+        return view('programa.edit', compact('programa','asignaturaList', 'unidadesList'));
 
     }
 

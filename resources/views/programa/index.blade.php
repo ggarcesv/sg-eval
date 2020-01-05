@@ -16,7 +16,7 @@
 
         $idSelec=$_GET['idSelec'];
         
-        header('Location: /config/programa/'.$idSelec.'/edit');
+        header('Location: /config/programa/'.$idSelec.'/detalle');
 
         exit();
     }
@@ -41,7 +41,7 @@
             @foreach($programas as $programa)
                 <tr>
                     <td>{{ $programa->id }}</td>
-                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__asignaturas')->select('nombre')->where('id', $programa->asignaturaId)->get() )}}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__asignaturas')->select('nombre')->where('id', $programa->asignatura_id)->get() )}}</td>
 
                     <td>{{ $programa->nombre }}</td>
                     <td>{{ $programa->year }}</td>
@@ -56,7 +56,7 @@
         </tbody>
     </table>
    
-    <a href="{{ route('asignatura.create') }}" class="btn btn-primary">Agregar</a>
+    <a href="{{ route('programa.create') }}" class="btn btn-primary">Agregar</a>
     <input type="submit" value="Ver" class="btn btn-success">
      </form>
 
