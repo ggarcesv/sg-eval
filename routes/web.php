@@ -110,6 +110,10 @@ Route::get('/config/programa/edit/{id}', function () {
 
 // Privilegio
 
+Route::resource('/config/privilegio', 'PrivilegioController');
+
+
+/*
 Route::get('/config/privilegio', function () {
     return view('PrivilegioListar');
 });
@@ -122,14 +126,16 @@ Route::get('/config/privilegio/add', function () {
 Route::get('/config/privilegio/edit/{id}', function () {
     return view('PrivilegioEditar');
 });
-
+*/
 
 // Rol
 
+Route::resource('/config/rol', 'RolController');
+
+/*
 Route::get('/config/rol', function () {
     return view('RolListar');
 });
-
 
 Route::get('/config/rol/add', function () {
     return view('RolRegistro');
@@ -138,10 +144,13 @@ Route::get('/config/rol/add', function () {
 Route::get('/config/rol/edit/{id}', function () {
     return view('RolEditar');
 });
-
+*/
 
 // Modulo
 
+Route::resource('/config/modulo', 'ModuloController');
+
+/*
 Route::get('/config/modulo', function () {
     return view('ModuloListar');
 });
@@ -155,9 +164,13 @@ Route::get('/config/modulo/edit/{id}', function () {
     return view('ModuloEditar');
 });
 
+*/
 
 // Aspecto
 
+Route::resource('/config/aspecto', 'AspectoController');
+
+/*
 Route::get('/config/aspecto', function () {
     return view('AspectoListar');
 });
@@ -171,9 +184,13 @@ Route::get('/config/aspecto/edit/{id}', function () {
     return view('AspectoEditar');
 });
 
+*/
 
 // Criterio
 
+Route::resource('/config/criterio', 'CriterioController');
+
+/*
 Route::get('/config/criterio', function () {
     return view('CriterioListar');
 });
@@ -187,9 +204,13 @@ Route::get('/config/criterio/edit/{id}', function () {
     return view('CriterioEditar');
 });
 
+*/
 
 // Usuario
 
+Route::resource('/curso/usuario', 'UsuarioController');
+
+/*
 Route::get('/curso/usuario', function () {
     return view('UsuarioListar');
 });
@@ -201,10 +222,13 @@ Route::get('/curso/usuario/add', function () {
 Route::get('/curso/usuario/edit/{id}', function () {
     return view('UsuarioEditar');
 });
-
+*/
 
 // Curso
 
+Route::resource('/curso/asignaturadocentecurso', 'AsignaturaDocenteCursoController');
+
+/*
 Route::get('/curso/asignaturadocentecurso', function () {
     return view('CursoListar');
 });
@@ -225,9 +249,12 @@ Route::get('/curso/asignaturadocentecurso/detalle/edit/{id}', function () {
     return view('CursoEditarDetalle');
 });
 
-
+*/
 // Rubrica
 
+Route::resource('/curso/rubrica', 'RubricaController');
+
+/*
 Route::get('/curso/rubrica', function () {
     return view('RubricaListar');
 });
@@ -248,10 +275,13 @@ Route::get('/curso/rubrica/detalle/edit/{id}', function () {
     return view('RubricaEditarDetalle');
 });
 
-
+*/
 
 // Autoevaluación
 
+Route::resource('/curso/autoevaluacion', 'AutoevaluacionController');
+
+/*
 Route::get('/curso/autoevaluacion', function () {
     return view('AutoevaluacionListar');
 });
@@ -273,9 +303,13 @@ Route::get('/curso/autoevaluacion/detalle/edit/{id}', function () {
     return view('AutoevaluacionEditarDetalle');
 });
 
+*/
 
 // Calendario
 
+Route::resource('/curso/calendario', 'CalendarioController');
+
+/*
 Route::get('/curso/calendario', function () {
     return view('CalendarioListar');
 });
@@ -288,10 +322,13 @@ Route::get('/curso/calendario/edit/{id}', function () {
     return view('CalendarioEditar');
 });
 
- 
+ */
 
 // Rotación
 
+Route::resource('/curso/rotacion', 'RotacionController');
+
+/*
 Route::get('/curso/rotacion', function () {
     return view('RotacionListar');
 });
@@ -300,10 +337,13 @@ Route::get('/curso/rotacion/add', function () {
     return view('RotacionRegistro');
 });
 
-
+*/
 
 // Evaluación
 
+Route::resource('/curso/evaluacion', 'EvaluacionController');
+
+/*
 Route::get('/curso/evaluacion', function () {
     return view('EvaluacionListar');
 });
@@ -311,27 +351,28 @@ Route::get('/curso/evaluacion', function () {
 Route::get('/curso/evaluacion/add', function () {
     return view('EvaluacionRegistro');
 });
+*/
 
 
 
-// Autoevaluación
+// Perfil - Autoevaluación
 
 Route::get('/perfil/autoevaluacion', function () {
-    return view('Autoevaluacion');
+    return view('autoevaluacion.Autoevaluacion');
 });
 
 
-// Mis Datos
+// Perfil - Mis Datos
 
 Route::get('/perfil/misdatos', function () {
-    return view('MisDatosListar');
+    return view('perfil.MisDatosListar');
 });
 
 
-// Ayuda
+// Perfil - Ayuda
 
 Route::get('/perfil/ayuda', function () {
-    return view('AyudaListar');
+    return view('perfil.AyudaListar');
 });
 
 
