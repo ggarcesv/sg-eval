@@ -10,13 +10,13 @@
 
 @section('content')
 
-    {!! Form::model($programa, ['route'=>['programa.update', $programa->id], 'method'=>'PATCH', 'class'=>'form-horizontal']) !!}
+    {!! Form::model($programa, ['route'=>['programa.update', $programa->id_programa], 'method'=>'PATCH', 'class'=>'form-horizontal']) !!}
         
         <div class="form-group">
-            {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('id_programa', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['disabled' => true,'class'=>'form-control']) !!}
-                {!! $errors->has('id')?$errors->first('id'):'' !!}
+                {!! Form::text('id_programa', null, ['disabled' => true,'class'=>'form-control']) !!}
+                {!! $errors->has('id_programa')?$errors->first('id_programa'):'' !!}
             </div>
         </div>
         
@@ -30,38 +30,38 @@
 
         
         <div class="form-group">
-            {!! Form::label('nombre', 'Nombre', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('nombre_programa', 'Nombre', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('nombre', null, ['disabled' => true,'class'=>'form-control']) !!}
-                {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
+                {!! Form::text('nombre_programa', null, ['disabled' => true,'class'=>'form-control']) !!}
+                {!! $errors->has('nombre_programa')?$errors->first('nombre_programa'):'' !!}
             </div>
         </div>
 
         <div class="form-group">
-            {!! Form::label('year', 'Year', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('year_programa', 'Year', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('year', null, ['disabled' => true,'class'=>'form-control']) !!}
-                {!! $errors->has('year')?$errors->first('year'):'' !!}
+                {!! Form::text('year_programa', null, ['disabled' => true,'class'=>'form-control']) !!}
+                {!! $errors->has('year_programa')?$errors->first('year_programa'):'' !!}
             </div>
         </div>
 
         <div class="form-group">
-            {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('estado_programa', 'Estado', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
 
 
-            @if ($programa->estado == 1)
+            @if ($programa->estado_programa == 1)
 
 
-            {!! Form::text('estado', 'Activo', ['disabled' => true,'class'=>'form-control']) !!}
+            {!! Form::text('estado_programa', 'Activo', ['disabled' => true,'class'=>'form-control']) !!}
 
             @else
 
-            {!! Form::text('estado', 'Inactivo', ['disabled' => true,'class'=>'form-control']) !!}
+            {!! Form::text('estado_programa', 'Inactivo', ['disabled' => true,'class'=>'form-control']) !!}
 
             @endif 
 
-            {!! $errors->has('estado')?$errors->first('estado'):'' !!}
+            {!! $errors->has('estado_programa')?$errors->first('estado_programa'):'' !!}
             </div>
         </div>
 
@@ -75,8 +75,8 @@
         <tbody>
             @foreach($unidadesList as $unidad)
                 <tr>
-                    <td>{{ $unidad->nombre }}</td>
-                    <td>{{ $unidad->descripcion }}</td>
+                    <td>{{ $unidad->nombre_unidad }}</td>
+                    <td>{{ $unidad->descripcion_unidad }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -84,7 +84,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-            <a href="{{ route('programa.edit', $programa->id)}}" class="btn btn-primary">Editar</a>
+            <a href="{{ route('programa.edit', $programa->id_programa)}}" class="btn btn-primary">Editar</a>
             </div>
         </div>
     {!! Form::close() !!}

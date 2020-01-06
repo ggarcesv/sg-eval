@@ -8,6 +8,8 @@ class Programa extends Model {
 
     protected $table = 'saesa__programas';
 
-    protected $fillable = ['id','nombre','year','estado','asignatura_id'];
+    protected $primaryKey = 'id_programa';
+    
+    protected $fillable = ['id_programa','nombre_programa','year_programa','estado_programa','asignatura_id'];
 
 }

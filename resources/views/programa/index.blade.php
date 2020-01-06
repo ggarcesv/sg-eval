@@ -40,16 +40,16 @@
         <tbody>
             @foreach($programas as $programa)
                 <tr>
-                    <td>{{ $programa->id }}</td>
+                    <td>{{ $programa->id_programa }}</td>
                     <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__asignaturas')->select('nombre')->where('id', $programa->asignatura_id)->get() )}}</td>
 
-                    <td>{{ $programa->nombre }}</td>
-                    <td>{{ $programa->year }}</td>
+                    <td>{{ $programa->nombre_programa }}</td>
+                    <td>{{ $programa->year_programa }}</td>
                     @if ($programa->estado == 1)<td>Activo</td>
                     @else <td>Inactivo</td>
                     @endif
                     <td>
-                    {{ Form::radio('idSelec', $programa->id) }}  
+                    {{ Form::radio('idSelec', $programa->id_programa) }}  
                     </td>
                 </tr>
             @endforeach

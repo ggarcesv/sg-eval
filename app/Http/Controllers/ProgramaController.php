@@ -13,17 +13,18 @@ class ProgramaController extends Controller {
 
     public function index() {
 
-        $programas = Programa::orderBy('id', 'asc')->paginate(10);
+        $programas = Programa::orderBy('id_programa', 'asc')->paginate(10);
 
         return view('programa.index', compact('programas'));
 
     }
 
-    public function detalle($id) {
+    public function detalle($id_programa) {
 
-        $programa = Programa::find($id);
-        $unidadesList = Unidad::all()->where('estado', 1)->where('programa_id', $id);
-        //$unidadesList = Unidad::all()->where('estado', 1) -> where('id', unidad->id);
+       
+        $programa = Programa::find($id_programa);
+
+        $unidadesList = Unidad::all()->where('estado_unidad', 1)->where('programa_id', $id_programa);
 
         return view('programa.detalle', compact('programa','unidadesList'));
 
@@ -53,10 +54,10 @@ class ProgramaController extends Controller {
     public function store(Request $request) {
        
         $this->validate($request, [
-            'id'=>'Required',
-            'nombre'=>'Required',
-            'year'=>'Required',
-            'estado'=>'Required'
+            'id_programa'=>'Required',
+            'nombre_programa'=>'Required',
+            'year_programa'=>'Required',
+            'estado_programa'=>'Required'
         ]);
 
 
@@ -66,28 +67,69 @@ class ProgramaController extends Controller {
 
     }
 
-    public function edit($id) {
+    public function edit($id_programa) {
 
-        $programa = Programa::find($id);
+        $programa = Programa::find($id_programa);
         $asignaturaList = Asignatura::all()->where('estado', 1) -> pluck('nombre','id');
-        $unidadesList = Unidad::all()->where('estado', 1)->where('programa_id', $id);
+        $unidadesList = Unidad::all()->where('estado_unidad', 1)->where('programa_id', $id_programa);
 
         return view('programa.edit', compact('programa','asignaturaList', 'unidadesList'));
 
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id_programa) {
 
-        $this->validate($request, [
-            'id'=>'Required',
-            'nombre'=>'Required',
-            'year'=>'Required',
-            'estado'=>'Required'
+        $programaUpdate = $this->validate($request, [
+            'id_programa'=>'Required',
+            'nombre_programa'=>'Required',
+            'year_programa'=>'Required',
+            'estado_programa'=>'Required'
         ]);
 
-        $programa = Programa::find($id);
-        $programaUpdate = $request->all();
+        $programa = Programa::find($id_programa);
         $programa->update($programaUpdate);
+
+
+        $UnidadUpdate = array($this->validate($request, [
+            'id_unidad'=>'Required',
+            'nombre_unidad'=>'Required',
+            'descripcion_unidad'=>'Required'
+        ]));
+
+        //die(var_dump($UnidadUpdate));
+        //    (var_dump($id_unidad));
+
+        $id_unidades = $request->id_unidad;
+        $nombre_unidades = $request->nombre_unidad;
+        $descripcion_unidades =  $request->descripcion_unidad;
+        $i=0;
+
+
+        foreach($id_unidades as $id_unidad) {
+
+            $instanciaUnidad = Unidad::find($id_unidad);
+            $instanciaUnidad->update($UnidadUpdate[$id_unidad]);
+
+        }
+
+
+
+
+/*
+
+        foreach ($UnidadUpdate as $unidad) {
+            
+            (var_dump($unidad));
+            (var_dump('------------------------------'));
+
+            $id_unidad=array_column($unidad, 'id_unidad');
+            (var_dump($id_unidad));
+
+            $unidad = Unidad::find($id_unidad);
+            $unidadUpdate = $unidad->all();
+            $unidad->update($unidadUpdate);
+        }
+*/
         return redirect('/config/programa');
     }
 }

@@ -9,48 +9,48 @@
 
 @section('content')
 
-    {!! Form::model($programa, ['route'=>['programa.update', $programa->id], 'method'=>'PATCH', 'class'=>'form-horizontal']) !!}
+    {!! Form::model($programa, ['route'=>['programa.update', $programa->id_programa], 'method'=>'PATCH', 'class'=>'form-horizontal']) !!}
         
         <div class="form-group">
-            {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('id_programa', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
-                {!! $errors->has('id')?$errors->first('id'):'' !!}
+                {!! Form::text('id_programa', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('id_programa')?$errors->first('id_programa'):'' !!}
             </div>
         </div>
         
         <div class="form-group">
             {!! Form::label('asignatura', 'Asignatura', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::select('asignatura_id', $asignaturaList, ['class'=>'form-control']) !!} 
-                {!! $errors->has('asignatura_id')?$errors->first('escuela'):'' !!}
+                {!! Form::select('asignatura', $asignaturaList, ['class'=>'form-control']) !!} 
+                {!! $errors->has('asignatura')?$errors->first('escuela'):'' !!}
             </div>
         </div>
 
 
         <div class="form-group">
-            {!! Form::label('nombre', 'Nombre', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('nombre_programa', 'Nombre', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
-                {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
+                {!! Form::text('nombre_programa', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('nombre_programa')?$errors->first('nombre_programa'):'' !!}
             </div>
         </div>
 
         <div class="form-group">
-            {!! Form::label('year', 'Year', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('year_programa', 'Year', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('year', null, ['class'=>'form-control']) !!}
-                {!! $errors->has('year')?$errors->first('year'):'' !!}
+                {!! Form::text('year_programa', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('year_programa')?$errors->first('year_programa'):'' !!}
             </div>
         </div>
 
 
 
         <div class="form-group">
-            {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
+            {!! Form::label('estado_programa', 'Estado', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::select('estado', array('1' => 'Habilitado', '0' => 'Deshabilitado'),['class'=>'form-control']) !!}
-                {!! $errors->has('estado')?$errors->first('estado'):'' !!}
+                {!! Form::select('estado_programa', array('1' => 'Habilitado', '0' => 'Deshabilitado'),['class'=>'form-control']) !!}
+                {!! $errors->has('estado_programa')?$errors->first('estado_programa'):'' !!}
             </div>
         </div>
 
@@ -58,18 +58,27 @@
         @foreach($unidadesList as $unidad)
 
             <div class="form-group">
-                {!! Form::label('nombre', 'Nombre Unidad', ['class'=>'control-label col-md-2']) !!}
+                {!! Form::label('id_unidad', 'Id Unidad', ['class'=>'control-label col-md-2']) !!}
                 <div class="col-md-3">
-                    {!! Form::text('nombre', $unidad->nombre, ['class'=>'form-control']) !!}
-                    {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
+                    {!! Form::text('id_unidad[]', $unidad->id_unidad, ['class'=>'form-control']) !!}
+                    {!! $errors->has('id_unidad[]')?$errors->first('[id_unidad[]'):'' !!}
+
                 </div>
             </div>
 
             <div class="form-group">
-                {!! Form::label('descripcion', 'Descripcion', ['class'=>'control-label col-md-2']) !!}
+                {!! Form::label('nombre_unidad', 'Nombre Unidad', ['class'=>'control-label col-md-2']) !!}
                 <div class="col-md-3">
-                    {!! Form::text('descripcion', $unidad->descripcion, ['class'=>'form-control']) !!}
-                    {!! $errors->has('descripcion')?$errors->first('descripcion'):'' !!}
+                    {!! Form::text('nombre_unidad[]', $unidad->nombre_unidad, ['class'=>'form-control']) !!}
+                    {!! $errors->has('nombre_unidad[]')?$errors->first('nombre_unidad[]'):'' !!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('descripcion_unidad', 'Descripcion', ['class'=>'control-label col-md-2']) !!}
+                <div class="col-md-3">
+                    {!! Form::text('descripcion_unidad[]', $unidad->descripcion_unidad, ['class'=>'form-control']) !!}
+                    {!! $errors->has('descripcion_unidad[]')?$errors->first('descripcion_unidad[]'):'' !!}
                 </div>
             </div>
 
@@ -83,4 +92,5 @@
             </div>
         </div>
     {!! Form::close() !!}
+
 @stop
