@@ -4,7 +4,7 @@
 <title>@yield('title', 'Programa')</title>
 
 @section('header')
-    <h2>Configuración Programa</h2>
+    <h2>Configuración Programas</h2>
 @stop
 
 @section('content')
