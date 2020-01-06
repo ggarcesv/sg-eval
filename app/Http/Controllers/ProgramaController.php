@@ -99,6 +99,8 @@ class ProgramaController extends Controller {
         //die(var_dump($UnidadUpdate));
         //    (var_dump($id_unidad));
 
+
+        /*
         $id_unidades = $request->id_unidad;
         $nombre_unidades = $request->nombre_unidad;
         $descripcion_unidades =  $request->descripcion_unidad;
@@ -111,6 +113,8 @@ class ProgramaController extends Controller {
             $instanciaUnidad->update($UnidadUpdate[$id_unidad]);
 
         }
+        
+        */
 
 
 
