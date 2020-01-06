@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class rubricaDetalle extends Model
-{
-    //
+class RubricaDetalle extends Model {
+
+    protected $table = 'saesa__rubricas_detalles';
+    protected $fillable = ['id', 'criterio_id','rubrica_id'];
+    
 }
