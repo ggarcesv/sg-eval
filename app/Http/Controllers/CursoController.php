@@ -29,7 +29,6 @@ class CursoController extends Controller {
        
         $this->validate($request, [
             'id'=>'Required',
-            'nombre'=>'Required',
             'usuario_id'=>'Required',
             'asignatura_id'=>'Required',
             'year'=>'Required',
@@ -47,8 +46,11 @@ class CursoController extends Controller {
     public function edit($id) {
 
         $curso = Curso::find($id);
-        
-        return view('curso.edit', compact('curso'));
+        $docenteList = Usuario::all() ->where('estado', 1) ->where('rol_id', 2) ->pluck('nombre','id');
+        $asignaturaList = Asignatura::all() ->where('estado', 1) ->pluck('nombre','id');
+        $carreraList = Carrera::all() ->where('estado', 1) ->pluck('nombre','id');
+
+        return view('curso.edit', compact('curso','docenteList','asignaturaList','carreraList'));
 
     }
 
@@ -64,7 +66,6 @@ class CursoController extends Controller {
         $this->validate($request, [
             'id'=>'Required',
             'year'=>'Required',
-            'semestre'=>'Required',
             'num_seccion'=>'Required',
             'estado'=>'Required',
             'asignatura_id'=>'Required',

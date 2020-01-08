@@ -16,7 +16,7 @@
 
         $idSelec=$_GET['idSelec'];
         
-        header('Location: /curso/'.$idSelec.'/detalle');
+        header('Location: /curso/'.$idSelec.'/edit');
 
         exit();
     }
@@ -62,7 +62,7 @@
    
 
     <a href="{{  route('curso.create') }}" class="btn btn-primary">Agregar</a>
-    <input type="submit" value="Ver" class="btn btn-success">
+    <input type="submit" value="Editar" class="btn btn-success">
 
 
 
