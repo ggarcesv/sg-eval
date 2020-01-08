@@ -3,45 +3,59 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\AsignaturaSeccionCurso;
+use App\Curso;
+use App\Usuario;
+use App\Asignatura;
+use App\Carrera;
 
-class AsignaturaDocenteCursoController extends Controller {
+class CursoController extends Controller {
 
     public function index() {
 
-        $cursos = AsignaturaSeccionCurso::orderBy('id', 'desc')->paginate(10);
+        $cursos = Curso::orderBy('id', 'desc')->paginate(10);
         return view('curso.index', compact('cursos'));
     }
 
     public function create() {
 
-        return view('curso.create');
+        $docenteList = Usuario::all() ->where('estado', 1) ->where('rol_id', 2) ->pluck('nombre','id');
+        $asignaturaList = Asignatura::all() ->where('estado', 1) ->pluck('nombre','id');
+        $carreraList = Carrera::all() ->where('estado', 1) ->pluck('nombre','id');
 
+        return view('curso.create', compact('docenteList','asignaturaList','carreraList'));
     }
 
     public function store(Request $request) {
        
         $this->validate($request, [
             'id'=>'Required',
-            'year'=>'Required',
-            'semestre'=>'Required',
-            'num_seccion'=>'Required',
-            'estado'=>'Required',
+            'nombre'=>'Required',
+            'usuario_id'=>'Required',
             'asignatura_id'=>'Required',
+            'year'=>'Required',
+            'num_seccion'=>'Required',
             'carrera_id'=>'Required',
-            'usuario_id'=>'Required'
+            'estado'=>'Required'
             ]);
 
         $curso = $request->all();
-        AsignaturaSeccionCurso::create($curso);
-        return redirect('curso/asignaturadocentecurso');
+        Curso::create($curso);
+        return redirect('curso');
 
     }
 
     public function edit($id) {
 
-        $curso = AsignaturaSeccionCurso::find($id);
+        $curso = Curso::find($id);
+        
         return view('curso.edit', compact('curso'));
+
+    }
+
+    public function detalle($id) {
+
+        $curso = Curso::find($id);
+        return view('curso.detalle', compact('curso'));
 
     }
 
@@ -58,9 +72,9 @@ class AsignaturaDocenteCursoController extends Controller {
             'usuario_id'=>'Required'
         ]);
 
-        $curso = AsignaturaSeccionCurso::find($id);
+        $curso = Curso::find($id);
         $cursoUpdate = $request->all();
         $curso->update($cursoUpdate);
-        return redirect('curso/asignaturadocentecurso');    
+        return redirect('curso');    
     }
 }

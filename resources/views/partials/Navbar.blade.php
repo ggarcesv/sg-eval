@@ -81,8 +81,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingreso Curso</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{{ url('/curso') }}">Curso</a>
                         <a class="dropdown-item" href="{{ url('/curso/usuario') }}">Usuario</a>
-                        <a class="dropdown-item" href="{{ url('/curso/asignaturadocentecurso') }}">Asignatura Docente Curso</a>
+                        <a class="dropdown-item" href="{{ url('/curso/inscripcion') }}">Inscripcion</a>
                         <a class="dropdown-item" href="{{ url('/curso/rubrica') }}">Rúbrica</a>
                         <a class="dropdown-item" href="{{ url('/curso/autoevaluacion') }}">Autoevaluación</a>
                     </div>
@@ -94,6 +95,7 @@
                         <a class="dropdown-item" href="{{ url('/curso/calendario') }}">Calendario</a>
                         <a class="dropdown-item" href="{{ url('/curso/rotacion') }}">Rotación</a>
                         <a class="dropdown-item" href="{{ url('/curso/evaluacion') }}">Evaluar</a>
+                        <a class="dropdown-item" href="{{ url('/curso/notas') }}">Notas</a>
                     </div>
                 </li>
 

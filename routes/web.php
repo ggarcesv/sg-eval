@@ -226,7 +226,7 @@ Route::get('/curso/usuario/edit/{id}', function () {
 
 // Curso
 
-Route::resource('/curso/asignaturadocentecurso', 'AsignaturaDocenteCursoController');
+Route::resource('/curso', 'CursoController');
 
 /*
 Route::get('/curso/asignaturadocentecurso', function () {
@@ -352,6 +352,12 @@ Route::get('/curso/evaluacion/add', function () {
     return view('EvaluacionRegistro');
 });
 */
+
+
+// Inscripcion de asignaturas
+
+Route::resource('/curso/inscripcion', 'InscripcionController');
+
 
 
 

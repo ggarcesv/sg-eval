@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Rol;
 use App\Sede;
+use App\Curso;
 
 class UsuarioController extends Controller {
 
@@ -20,7 +21,7 @@ class UsuarioController extends Controller {
 
         $rolList = Rol::all()->where('estado', 1) -> pluck('nombre','id');
         $sedeList = Sede::all()->where('estado', 1) -> pluck('nombre','id');
-
+        
         return view('usuario.create', compact('rolList','sedeList'));
 
     }
