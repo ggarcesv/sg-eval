@@ -10,7 +10,7 @@ Route::get('/login', function () {
 
 
 // Sede
-Route::resource('/config/sede', 'SedeController');
+Route::resource('config/sede', 'SedeController');
 
 // Route::get('/config/sede', 'SedeController@index')
 
@@ -26,7 +26,7 @@ Route::get('/config/sede/edit/{id}', function () {
 
 // Escuela
 
-Route::resource('/config/escuela', 'EscuelaController');
+Route::resource('config/escuela', 'EscuelaController');
 
 /*
 Route::get('/config/escuela', function () {
@@ -45,7 +45,7 @@ Route::get('/config/escuela/edit/{id}', function () {
 
 // carrera
 
-Route::resource('/config/carrera', 'CarreraController');
+Route::resource('config/carrera', 'CarreraController');
 
 /*
 
@@ -67,7 +67,7 @@ Route::get('/config/carrera/edit/{id}', function () {
 
 // asignatura
 
-Route::resource('/config/asignatura', 'AsignaturaController');
+Route::resource('config/asignatura', 'AsignaturaController');
 
 /*
 Route::get('/config/asignatura', function () {
@@ -85,7 +85,7 @@ Route::get('/config/asignatura/edit/{id}', function () {
 
 // Programa
 
-Route::resource('/config/programa', 'ProgramaController');
+Route::resource('config/programa', 'ProgramaController');
 Route::get('/config/programa/{id}/detalle', 'ProgramaController@detalle');
 
 
@@ -110,7 +110,7 @@ Route::get('/config/programa/edit/{id}', function () {
 
 // Privilegio
 
-Route::resource('/config/privilegio', 'PrivilegioController');
+Route::resource('config/privilegio', 'PrivilegioController');
 
 
 /*
@@ -130,7 +130,7 @@ Route::get('/config/privilegio/edit/{id}', function () {
 
 // Rol
 
-Route::resource('/config/rol', 'RolController');
+Route::resource('config/rol', 'RolController');
 
 /*
 Route::get('/config/rol', function () {
@@ -148,7 +148,7 @@ Route::get('/config/rol/edit/{id}', function () {
 
 // Modulo
 
-Route::resource('/config/modulo', 'ModuloController');
+Route::resource('config/modulo', 'ModuloController');
 
 /*
 Route::get('/config/modulo', function () {
@@ -168,7 +168,7 @@ Route::get('/config/modulo/edit/{id}', function () {
 
 // Aspecto
 
-Route::resource('/config/aspecto', 'AspectoController');
+Route::resource('config/aspecto', 'AspectoController');
 
 /*
 Route::get('/config/aspecto', function () {
@@ -188,7 +188,7 @@ Route::get('/config/aspecto/edit/{id}', function () {
 
 // Criterio
 
-Route::resource('/config/criterio', 'CriterioController');
+Route::resource('config/criterio', 'CriterioController');
 
 /*
 Route::get('/config/criterio', function () {
@@ -208,7 +208,7 @@ Route::get('/config/criterio/edit/{id}', function () {
 
 // Usuario
 
-Route::resource('/curso/usuario', 'UsuarioController');
+Route::resource('curso/usuario', 'UsuarioController');
 
 /*
 Route::get('/curso/usuario', function () {
@@ -226,7 +226,7 @@ Route::get('/curso/usuario/edit/{id}', function () {
 
 // Curso
 
-Route::resource('/curso', 'CursoController');
+Route::resource('curso', 'CursoController');
 
 /*
 Route::get('/curso/asignaturadocentecurso', function () {
@@ -252,7 +252,7 @@ Route::get('/curso/asignaturadocentecurso/detalle/edit/{id}', function () {
 */
 // Rubrica
 
-Route::resource('/curso/rubrica', 'RubricaController');
+Route::resource('curso/rubrica', 'RubricaController');
 
 /*
 Route::get('/curso/rubrica', function () {
@@ -279,7 +279,7 @@ Route::get('/curso/rubrica/detalle/edit/{id}', function () {
 
 // Autoevaluación
 
-Route::resource('/curso/autoevaluacion', 'AutoevaluacionController');
+Route::resource('curso/autoevaluacion', 'AutoevaluacionController');
 
 /*
 Route::get('/curso/autoevaluacion', function () {
@@ -307,7 +307,7 @@ Route::get('/curso/autoevaluacion/detalle/edit/{id}', function () {
 
 // Calendario
 
-Route::resource('/curso/calendario', 'CalendarioController');
+Route::resource('curso/calendario', 'CalendarioController');
 
 /*
 Route::get('/curso/calendario', function () {
@@ -326,7 +326,7 @@ Route::get('/curso/calendario/edit/{id}', function () {
 
 // Rotación
 
-Route::resource('/curso/rotacion', 'RotacionController');
+Route::resource('curso/rotacion', 'RotacionController');
 
 /*
 Route::get('/curso/rotacion', function () {
@@ -341,7 +341,7 @@ Route::get('/curso/rotacion/add', function () {
 
 // Evaluación
 
-Route::resource('/curso/evaluacion', 'EvaluacionController');
+Route::resource('curso/evaluacion', 'EvaluacionController');
 
 /*
 Route::get('/curso/evaluacion', function () {
@@ -356,21 +356,22 @@ Route::get('/curso/evaluacion/add', function () {
 
 // Inscripcion de asignaturas
 
-Route::resource('/curso/inscripcion', 'InscripcionController');
+Route::resource('inscripcion', 'InscripcionController');
+//Route::get('curso/inscripcion', 'InscripcionController@index');
 
 
 
 
 // Perfil - Autoevaluación
 
-Route::get('/perfil/autoevaluacion', function () {
+Route::get('perfil/autoevaluacion', function () {
     return view('autoevaluacion.Autoevaluacion');
 });
 
 
 // Perfil - Mis Datos
 
-Route::get('/perfil/misdatos', function () {
+Route::get('perfil/misdatos', function () {
     return view('perfil.MisDatosListar');
 });
 

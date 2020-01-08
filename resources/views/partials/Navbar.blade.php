@@ -83,7 +83,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ url('/curso') }}">Curso</a>
                         <a class="dropdown-item" href="{{ url('/curso/usuario') }}">Usuario</a>
-                        <a class="dropdown-item" href="{{ url('/curso/inscripcion') }}">Inscripcion</a>
+                        <a class="dropdown-item" href="{{ url('/inscripcion') }}">Inscripcion</a>
                         <a class="dropdown-item" href="{{ url('/curso/rubrica') }}">Rúbrica</a>
                         <a class="dropdown-item" href="{{ url('/curso/autoevaluacion') }}">Autoevaluación</a>
                     </div>

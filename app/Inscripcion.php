@@ -8,5 +8,5 @@ class Inscripcion extends Model {
 
     protected $table = 'saesa__inscripciones';
 
-    protected $fillable = ['id_curso','id_usuario'];
+    protected $fillable = ['curso_id','usuario_id', 'estado'];
 }
