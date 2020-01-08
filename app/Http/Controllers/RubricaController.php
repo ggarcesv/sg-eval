@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Rubrica;
+use App\Modulo;
+use App\AsignacionCarrera;
 
 class RubricaController extends Controller {
 
@@ -16,8 +18,9 @@ class RubricaController extends Controller {
 
     public function create() {
 
-        //$aspectoList = Aspecto::all()->where('estado', 1) -> pluck('nombre','id');
-        //return view('criterio.create', compact('aspectoList'));
+        $moduloList = Modulo::all()->where('estado', 1) -> pluck('nombre','id');
+        $asignacionCarreraList = AsignacionCarrera::all()->where('estado', 1) -> pluck('nombre','id');
+        return view('rubrica.create', compact('moduloList','asignacionCarreraList'));
 
     }
 
@@ -39,10 +42,11 @@ class RubricaController extends Controller {
 
     public function edit($id) {
 
-      //  $criterio = Criterio::find($id);
-      //  $aspectoList = Aspecto::all()->where('estado', 1) -> pluck('nombre','id');
+        $rubrica = Rubrica::find($id);
+        $moduloList = Modulo::all()->where('estado', 1) -> pluck('nombre','id');
+        $asignacionCarreraList = AsignacionCarrera::all()->where('estado', 1) -> pluck('nombre','id');
 
-     //   return view('rubrica.edit', compact('criterio','aspectoList'));
+        return view('rubrica.edit', compact('rubrica','moduloList','asignacionCarreraList'));
     }
 
     public function update(Request $request, $id) {
@@ -55,7 +59,7 @@ class RubricaController extends Controller {
             'estado'=>'Required'
         ]);
 
-        $rubrica = Criterio::find($id);
+        $rubrica = Rubrica::find($id);
         $rubricaUpdate = $request->all();
         $rubrica->update($rubricaUpdate);
         return redirect('rubrica');    
