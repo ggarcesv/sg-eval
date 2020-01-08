@@ -208,7 +208,7 @@ Route::get('/config/criterio/edit/{id}', function () {
 
 // Usuario
 
-Route::resource('curso/usuario', 'UsuarioController');
+Route::resource('usuario', 'UsuarioController');
 
 /*
 Route::get('/curso/usuario', function () {
@@ -252,7 +252,7 @@ Route::get('/curso/asignaturadocentecurso/detalle/edit/{id}', function () {
 */
 // Rubrica
 
-Route::resource('curso/rubrica', 'RubricaController');
+Route::resource('rubrica', 'RubricaController');
 
 /*
 Route::get('/curso/rubrica', function () {
@@ -279,7 +279,7 @@ Route::get('/curso/rubrica/detalle/edit/{id}', function () {
 
 // Autoevaluación
 
-Route::resource('curso/autoevaluacion', 'AutoevaluacionController');
+Route::resource('autoevaluacion', 'AutoevaluacionController');
 
 /*
 Route::get('/curso/autoevaluacion', function () {
@@ -307,7 +307,7 @@ Route::get('/curso/autoevaluacion/detalle/edit/{id}', function () {
 
 // Calendario
 
-Route::resource('curso/calendario', 'CalendarioController');
+Route::resource('calendario', 'CalendarioController');
 
 /*
 Route::get('/curso/calendario', function () {
@@ -326,7 +326,7 @@ Route::get('/curso/calendario/edit/{id}', function () {
 
 // Rotación
 
-Route::resource('curso/rotacion', 'RotacionController');
+Route::resource('rotacion', 'RotacionController');
 
 /*
 Route::get('/curso/rotacion', function () {
@@ -341,7 +341,7 @@ Route::get('/curso/rotacion/add', function () {
 
 // Evaluación
 
-Route::resource('curso/evaluacion', 'EvaluacionController');
+Route::resource('evaluacion', 'EvaluacionController');
 
 /*
 Route::get('/curso/evaluacion', function () {

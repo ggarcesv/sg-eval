@@ -9,7 +9,7 @@
 
 @section('content')
 
-    {!! Form::open(['url'=>'curso/usuario/','class'=>'form-horizontal']) !!}
+    {!! Form::open(['url'=>'usuario','class'=>'form-horizontal']) !!}
         
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}

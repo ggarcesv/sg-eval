@@ -82,20 +82,20 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ingreso Curso</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ url('/curso') }}">Curso</a>
-                        <a class="dropdown-item" href="{{ url('/curso/usuario') }}">Usuario</a>
+                        <a class="dropdown-item" href="{{ url('/usuario') }}">Usuario</a>
                         <a class="dropdown-item" href="{{ url('/inscripcion') }}">Inscripcion</a>
-                        <a class="dropdown-item" href="{{ url('/curso/rubrica') }}">Rúbrica</a>
-                        <a class="dropdown-item" href="{{ url('/curso/autoevaluacion') }}">Autoevaluación</a>
+                        <a class="dropdown-item" href="{{ url('/rubrica') }}">Rúbrica</a>
+                        <a class="dropdown-item" href="{{ url('/autoevaluacion') }}">Autoevaluación</a>
                     </div>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Evaluación Curso</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ url('/curso/calendario') }}">Calendario</a>
-                        <a class="dropdown-item" href="{{ url('/curso/rotacion') }}">Rotación</a>
-                        <a class="dropdown-item" href="{{ url('/curso/evaluacion') }}">Evaluar</a>
-                        <a class="dropdown-item" href="{{ url('/curso/notas') }}">Notas</a>
+                        <a class="dropdown-item" href="{{ url('/calendario') }}">Calendario</a>
+                        <a class="dropdown-item" href="{{ url('/rotacion') }}">Rotación</a>
+                        <a class="dropdown-item" href="{{ url('/evaluacion') }}">Evaluar</a>
+                        <a class="dropdown-item" href="{{ url('/notas') }}">Notas</a>
                     </div>
                 </li>
 

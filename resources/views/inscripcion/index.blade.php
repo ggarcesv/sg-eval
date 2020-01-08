@@ -29,6 +29,7 @@
 <table class="table table-bordered table-responsive" style="margin-top: 10px;">
         <thead>
             <tr>
+                <th>Fecha Ingreso</th>
                 <th>Asignatura</th>
                 <th>Alumno</th>
                 <th>Estado</th>
@@ -38,6 +39,7 @@
         <tbody>
             @foreach($inscripciones as $inscripcion)
                 <tr>
+                    <td>{{ $inscripcion->created_at }}</td>
                     <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__asignaturas')->select('nombre')->where('id', $inscripcion->curso_id)->get() )}}</td>
                     <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__usuarios')->select('nombre')->where('id', $inscripcion->usuario_id)->get() )}}</td>
                     @if ($inscripcion->estado == 1)<td>Activo</td>

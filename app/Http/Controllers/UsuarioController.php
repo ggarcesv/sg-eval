@@ -43,7 +43,7 @@ class UsuarioController extends Controller {
 
         $usuario = $request->all();
         Usuario::create($usuario);
-        return redirect('/curso/usuario');
+        return redirect('usuario');
 
     }
 
@@ -73,7 +73,7 @@ class UsuarioController extends Controller {
         $usuario = Usuario::find($id);
         $usuarioUpdate = $request->all();
         $usuario->update($usuarioUpdate);
-        return redirect('/curso/usuario');    
+        return redirect('usuario');    
     }
 
 }
