@@ -85,7 +85,10 @@
                         <a class="dropdown-item" href="{{ url('/usuario') }}">Usuario</a>
                         <a class="dropdown-item" href="{{ url('/inscripcion') }}">Inscripcion</a>
                         <a class="dropdown-item" href="{{ url('/rubrica') }}">Rúbrica</a>
+                        <a class="dropdown-item" href="{{ url('/rubricadetalle') }}">Rúbrica Detalle</a>
                         <a class="dropdown-item" href="{{ url('/autoevaluacion') }}">Autoevaluación</a>
+                        <a class="dropdown-item" href="{{ url('/autoevaluaciondetalle') }}">Autoevaluación Detalle</a>
+
                     </div>
                 </li>
 

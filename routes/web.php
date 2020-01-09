@@ -254,6 +254,8 @@ Route::get('/curso/asignaturadocentecurso/detalle/edit/{id}', function () {
 
 Route::resource('rubrica', 'RubricaController');
 
+Route::resource('rubricadetalle', 'RubricaDetalleController');
+
 /*
 Route::get('/curso/rubrica', function () {
     return view('RubricaListar');
