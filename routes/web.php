@@ -281,7 +281,8 @@ Route::get('/curso/rubrica/detalle/edit/{id}', function () {
 
 // Autoevaluación
 
-Route::resource('autoevaluacion', 'AutoevaluacionController');
+Route::resource('autoevaluacion', 'RubricaAutoevaluacionController');
+
 
 /*
 Route::get('/curso/autoevaluacion', function () {
