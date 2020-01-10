@@ -40,9 +40,9 @@
             @foreach($rubricaDetalles as $rubricaDetalle)
                 <tr>
                     <td>{{ $rubricaDetalle->id }}</td>
-                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__rubricas')->select('nombre')->where('id', $rubricaDetalle->rubrica_id)->get() )}}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $rubricaNombre = DB::table('saesa__rubricas')->select('nombre')->where('id', $rubricaDetalle->rubrica_id)->get() )}}</td>
 
-                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__criterios')->select('nombre')->where('id', $rubricaDetalle->criterio_id)->get() )}}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $criterioNombre = DB::table('saesa__criterios')->select('nombre')->where('id', $rubricaDetalle->criterio_id)->get() )}}</td>
 
                     @if ($rubricaDetalle->estado == 1)<td>Activo</td>
                     @else <td>Inactivo</td>
