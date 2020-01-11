@@ -347,6 +347,7 @@ Route::get('/curso/rotacion/add', function () {
 // Evaluación
 
 Route::resource('evaluacion', 'EvaluacionController');
+Route::resource('notas', 'NotasController');
 
 /*
 Route::get('/curso/evaluacion', function () {
