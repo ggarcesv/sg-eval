@@ -61,9 +61,10 @@
     <div class="row">
         <div class="col-md-6">
             <h2>Login</h2>
-            {% if errors %}
-                {% include 'partials/errors.blade.php' %}
-            {% endif %}
+            @if ($errors->any())
+                 @include('partials.errors', ['errors' => $errors])
+            @endif
+
             <form method="post">
                 <div class="form-group">
                     <label for="inputEmail">Email</label>
