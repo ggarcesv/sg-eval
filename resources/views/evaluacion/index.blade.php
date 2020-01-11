@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @include('partials.Navbar')
 
-<title>@yield('title', 'Sede')</title>
+<title>@yield('title', 'Evaluacion')</title>
 
 
 @section('header')
-    <h2>Configuración Sede</h2>
+    <h2>Configuración Evaluación</h2>
 @stop
 
 @section('content')

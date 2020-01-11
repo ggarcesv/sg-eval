@@ -18,8 +18,9 @@ class EvaluacionController extends Controller {
 
     public function create() {
 
+        $rotacionGrupoList = RotacionGrupo::all()->where('estado', 1) -> pluck('nombre','id');
         $criterioList = Criterio::all()->where('estado', 1) -> pluck('nombre','id');
-        return view('evaluacion.create', compact('criterioList'));
+        return view('evaluacion.create', compact('criterioList','rotacionGrupoList'));
 
     }
 
@@ -29,21 +30,22 @@ class EvaluacionController extends Controller {
             'id'=>'Required',
             'criterio_id'=>'Required',
             'rotacion_grupo_id'=>'Required',
-            'observacion'=>'Required'
+            'nota'=>'Required',
         ]);
 
-        $criterio = $request->all();
-        Criterio::create($criterio);
+        $evaluacion = $request->all();
+        Evaluacion::create($evaluacion);
         return redirect('evaluacion');
 
     }
 
     public function edit($id) {
 
-        //$criterio = Criterio::find($id);
-        //$aspectoList = Aspecto::all()->where('estado', 1) -> pluck('nombre','id');
+        $evaluacion = Evaluacion::find($id);
+        $rotacionGrupoList = RotacionGrupo::all()->where('estado', 1) -> pluck('nombre','id');
+        $criterioList = Criterio::all()->where('estado', 1) -> pluck('nombre','id');
 
-        return view('evaluacion.edit', compact('criterio','aspectoList'));
+        return view('evaluacion.edit', compact('evaluacion','criterioList','rotacionGrupoList'));
     }
 
     public function update(Request $request, $id) {
@@ -52,10 +54,10 @@ class EvaluacionController extends Controller {
             'id'=>'Required',
             'criterio_id'=>'Required',
             'rotacion_grupo_id'=>'Required',
-            'observacion'=>'Required'
+            'nota'=>'Required'
         ]);
 
-        $evaluacion = Criterio::find($id);
+        $evaluacion = Evaluacion::find($id);
         $evaluacionUpdate = $request->all();
         $evaluacion->update($evaluacionUpdate);
         return redirect('evaluacion');    
