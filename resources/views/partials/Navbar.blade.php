@@ -97,6 +97,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ url('/calendario') }}">Calendario</a>
                         <a class="dropdown-item" href="{{ url('/rotacion') }}">Rotación</a>
+                        <a class="dropdown-item" href="{{ url('/rotaciondetalle') }}">Rotación Detalle</a>
                         <a class="dropdown-item" href="{{ url('/evaluacion') }}">Evaluar</a>
                         <a class="dropdown-item" href="{{ url('/notas') }}">Notas</a>
                     </div>
@@ -120,7 +121,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar Sesión</a>
+                    <a class="nav-link" href="/login">Cerrar Sesión</a>
                 </li>
                 
             </ul>

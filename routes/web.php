@@ -331,6 +331,7 @@ Route::get('/curso/calendario/edit/{id}', function () {
 // Rotación
 
 Route::resource('rotacion', 'RotacionController');
+Route::resource('rotaciondetalle', 'RotacionDetalleController');
 
 /*
 Route::get('/curso/rotacion', function () {
