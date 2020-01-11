@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Calendario;
+use App\Curso;
 
 class CalendarioController extends Controller {
 
@@ -15,8 +16,9 @@ class CalendarioController extends Controller {
     }
 
     public function create() {
-
-        return view('calendario.create');
+       
+        $cursoList = Curso::all()->where('estado', 1) -> pluck('nombre','id');
+        return view('calendario.create', compact('cursoList'));
 
     }
 
@@ -40,7 +42,8 @@ class CalendarioController extends Controller {
     public function edit($id) {
 
         $calendario = Calendario::find($id);
-        return view('calendario.edit', compact('calendario'));
+        $cursoList = Curso::all()->where('estado', 1) -> pluck('nombre','id');
+        return view('calendario.edit', compact('calendario','cursoList'));
     }
 
     public function update(Request $request, $id) {

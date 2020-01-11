@@ -43,8 +43,8 @@
             @foreach($cursos as $curso)
                 <tr>
                     <td>{{ $curso->id }}</td>
-                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__usuarios')->select('nombre')->where('id', $curso->usuario_id)->get() )}}</td>
-                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__asignaturas')->select('nombre')->where('id', $curso->asignatura_id)->get() )}}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $nombreUsuario = DB::table('saesa__usuarios')->select('nombre')->where('id', $curso->usuario_id)->get() )}}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $nombreAsignatura = DB::table('saesa__asignaturas')->select('nombre')->where('id', $curso->asignatura_id)->get() )}}</td>
                     <td>{{ $curso->year }}</td>
                     <td>{{ $curso->num_seccion }}</td>
                     <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__carreras')->select('nombre')->where('id', $curso->carrera_id)->get() )}}</td>

@@ -17,6 +17,14 @@
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
+
+        <div class="form-group">
+            {!! Form::label('nombre', 'nombre', ['class'=>'control-label col-md-2']) !!}
+            <div class="col-md-3">
+                {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
+                {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
+            </div>
+        </div>
         
         <div class="form-group">
             {!! Form::label('docente', 'Docente', ['class'=>'control-label col-md-2']) !!}

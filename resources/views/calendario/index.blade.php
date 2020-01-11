@@ -42,8 +42,8 @@
             @foreach($calendarios as $calendario)
                 <tr>
                     <td>{{ $calendario->id }}</td>
-                    <td>{{{-- str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__cursos')->select('nombre')->where('id', $calendario->asignatura_seccion_curso_id)->get() ) --}}}</td>
-                    <td>{{{-- str_replace(array('[{"nombre":"','"}]'), '', $r = DB::table('saesa__cursos')->select('seccion')->where('id', $calendario->asignatura_seccion_curso_id)->get() ) --}}}</td>
+                    <td>{{ str_replace(array('[{"nombre":"','"}]'), '', $nombreCursos = DB::table('saesa__cursos')->select('nombre')->where('id', $calendario->asignatura_seccion_curso_id)->get() ) }}</td>
+                    <td>{{ str_replace(array('[{"num_seccion":','}]'), '', $seccionCursos = DB::table('saesa__cursos')->select('num_seccion')->where('id', $calendario->asignatura_seccion_curso_id)->get() ) }}</td>
                     <td>{{ $calendario->nombre }}</td>
                     <td>{{ $calendario->fecha }}</td>
 
