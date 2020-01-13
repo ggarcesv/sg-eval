@@ -9,7 +9,7 @@
 
 @section('content')
 
-<p> Bienvenido</p>
+<p> Bienvenido </p>
 
 <p> Tabla con datos del usuario </p>
 

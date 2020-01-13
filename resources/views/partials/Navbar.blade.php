@@ -44,25 +44,8 @@
                     </div>
                 </li>
 
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuración</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="{{ url('/config/sede') }}">Sede</a>
-                        <a class="dropdown-item" href="{{ url('/config/escuela') }}">Escuela</a>
-                        <a class="dropdown-item" href="{{ url('/config/carrera') }}">Carrera</a>
-                        <a class="dropdown-item" href="{{ url('/config/asignatura') }}">Asignatura</a>
-                        <a class="dropdown-item" href="{{ url('/config/programa') }}">Programa</a>
-                        <a class="dropdown-item" href="{{ url('/config/privilegio') }}">Privilegio</a>
-                        <a class="dropdown-item" href="{{ url('/config/rol') }}">Rol</a>
-                        <a class="dropdown-item" href="{{ url('/config/modulo') }}">Módulo</a>
-                        <a class="dropdown-item" href="{{ url('/config/aspecto') }}">Aspecto</a>
-                        <a class="dropdown-item" href="{{ url('/config/criterio') }}">Criterio</a>
-                    </div>
-                </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Cerrar Sesión</a>
+                    <a class="nav-link" href="/">Cerrar Sesión</a>
                 </li>
                 
             </ul>
