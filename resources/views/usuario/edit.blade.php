@@ -21,7 +21,7 @@
         <div class="form-group">
             {!! Form::label('rut', 'Rut', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::number('rut', null, ['class'=>'form-control']) !!}
+                {!! Form::number('rut', null, ['min'=>'0', 'max'=>'99999999','class'=>'form-control']) !!}
                 {!! $errors->has('rut')?$errors->first('rut'):'' !!}
             </div>
         </div>
