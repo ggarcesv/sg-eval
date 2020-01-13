@@ -14,7 +14,7 @@
         <div class="form-group">
             {!! Form::label('curso_id', 'Curso ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('curso_id',null, ['class'=>'form-control']) !!} 
+                {!! Form::number('curso_id',null, ['class'=>'form-control']) !!} 
                 {!! $errors->has('curso_id')?$errors->first('curso_id'):'' !!}
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="form-group">
             {!! Form::label('usuario_id', 'Usuario ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('usuario_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('usuario_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('usuario_id')?$errors->first('id'):'' !!}
             </div>
         </div>

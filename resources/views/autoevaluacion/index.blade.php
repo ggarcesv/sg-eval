@@ -5,7 +5,7 @@
 
 
 @section('header')
-    <h2>Configuración Autoevaluación</h2>
+    <h2>Configuración Rúbrica Autoevaluación</h2>
 @stop
 
 @section('content')

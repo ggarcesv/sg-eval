@@ -4,7 +4,7 @@
 <title>@yield('title', 'Rubrica')</title>
 
 @section('header')
-    <h2>Configuración Rubrica</h2>
+    <h2>Configuración Rúbrica Autoevaluación</h2>
 @stop
 
 @section('content')

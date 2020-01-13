@@ -12,7 +12,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -29,11 +29,10 @@
         <div class="form-group">
             {!! Form::label('rotacion_num', 'rotacion', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('rotacion_num', null, ['class'=>'form-control']) !!}
+                {!! Form::number('rotacion_num', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('rotacion_num')?$errors->first('rotacion_num'):'' !!}
             </div>
         </div>
-
 
         <div class="form-group">
             {!! Form::label('modulo_id', 'Modulo', ['class'=>'control-label col-md-2']) !!}
@@ -42,8 +41,6 @@
                 {!! $errors->has('modulo_id')?$errors->first('modulo_id'):'' !!}
             </div>
         </div>
-
-
 
         <div class="form-group">
             {!! Form::label('asignatura_seccion_curso_id', 'Curso', ['class'=>'control-label col-md-2']) !!}
@@ -54,30 +51,22 @@
         </div>
 
 
-
-
-
         <div class="form-group">
             {!! Form::label('fecha_inicio', 'fecha Inicio', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('fecha_inicio', null, ['class'=>'form-control']) !!}
+                {!! Form::date('fecha_inicio', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('fecha_inicio')?$errors->first('fecha_inicio'):'' !!}
             </div>
         </div>
 
-
-        
         <div class="form-group">
             {!! Form::label('fecha_termino', 'fecha Termino', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('fecha_termino', null, ['class'=>'form-control']) !!}
+                {!! Form::date('fecha_termino', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('fecha_termino')?$errors->first('fecha_termino'):'' !!}
             </div>
         </div>
 
-  
-
-        
         <div class="form-group">
             {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">

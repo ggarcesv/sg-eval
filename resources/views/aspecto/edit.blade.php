@@ -29,7 +29,7 @@
         <div class="form-group">
             {!! Form::label('ponderacion', 'Ponderación', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('ponderacion', null, ['class'=>'form-control']) !!}
+                {!! Form::number('ponderacion', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('ponderacion')?$errors->first('ponderacion'):'' !!}
             </div>
         </div>

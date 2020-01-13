@@ -4,7 +4,7 @@
 <title>@yield('title', 'Calendario')</title>
 
 @section('header')
-    <h2>Configuración Aspecto</h2>
+    <h2>Configuración Calendario</h2>
 @stop
 
 @section('content')
@@ -14,7 +14,7 @@
     <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
             {!! Form::label('fecha', 'fecha', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('fecha', null, ['class'=>'form-control']) !!}
+                {!! Form::date('fecha', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('fecha')?$errors->first('fecha'):'' !!}
             </div>
         </div>

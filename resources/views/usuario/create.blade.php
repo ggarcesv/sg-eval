@@ -14,7 +14,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="form-group">
             {!! Form::label('rut', 'Rut', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('rut', null, ['class'=>'form-control']) !!}
+                {!! Form::number('rut', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('rut')?$errors->first('rut'):'' !!}
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
             {!! Form::label('email', 'Email', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('email', null, ['class'=>'form-control']) !!}
+                {!! Form::email('email', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('email')?$errors->first('email'):'' !!}
             </div>
         </div>
@@ -48,7 +48,7 @@
         <div class="form-group">
             {!! Form::label('password', 'Password', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('password', null, ['class'=>'form-control']) !!}
+                {!! Form::password('password', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('password')?$errors->first('password'):'' !!}
             </div>
         </div>

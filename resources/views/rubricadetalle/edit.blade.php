@@ -13,7 +13,7 @@
     <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -21,7 +21,7 @@
         <div class="form-group">
             {!! Form::label('criterio_id', 'Criterio ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('criterio_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('criterio_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('criterio_id')?$errors->first('criterio_id'):'' !!}
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="form-group">
             {!! Form::label('rubrica_id', 'Rubrica ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('rubrica_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('rubrica_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('rubrica_id')?$errors->first('rubrica_id'):'' !!}
             </div>
         </div>
@@ -41,7 +41,6 @@
                 {!! $errors->has('estado')?$errors->first('estado'):'' !!}
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

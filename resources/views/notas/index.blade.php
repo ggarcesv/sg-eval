@@ -10,9 +10,6 @@
 
 @section('content')
 
-<form method="GET" action="">
-@csrf
-
 <table class="table table-bordered table-responsive" style="margin-top: 10px;">
         <thead>
             <tr>

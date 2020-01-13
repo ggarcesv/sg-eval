@@ -21,7 +21,7 @@
         <div class="form-group">
             {!! Form::label('criterio_id', 'Criterio ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('criterio_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('criterio_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('criterio_id')?$errors->first('criterio_id'):'' !!}
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="form-group">
             {!! Form::label('rubrica_autoevaluacion_id', 'Rubrica ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('rubrica_autoevaluacion_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('rubrica_autoevaluacion_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('rubrica_autoevaluacion_id')?$errors->first('rubrica_autoevaluacion_id'):'' !!}
             </div>
         </div>

@@ -14,7 +14,7 @@
         <div class="form-group">
             {!! Form::label('id_programa', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id_programa', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id_programa', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id_programa')?$errors->first('id_programa'):'' !!}
             </div>
         </div>
@@ -39,7 +39,7 @@
         <div class="form-group">
             {!! Form::label('year_programa', 'Year', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('year_programa', null, ['class'=>'form-control']) !!}
+                {!! Form::number('year_programa', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('year_programa')?$errors->first('year_programa'):'' !!}
             </div>
         </div>
@@ -60,8 +60,8 @@
             <div class="form-group">
                 {!! Form::label('id_unidad', 'Id Unidad', ['class'=>'control-label col-md-2']) !!}
                 <div class="col-md-3">
-                    {!! Form::text('id_unidad[]', $unidad->id_unidad, ['class'=>'form-control']) !!}
-                    {!! $errors->has('id_unidad[]')?$errors->first('[id_unidad[]'):'' !!}
+                    {!! Form::number('id_unidad[]', $unidad->id_unidad, ['class'=>'form-control']) !!}
+                    {!! $errors->has('id_unidad[]')?$errors->first('id_unidad[]'):'' !!}
 
                 </div>
             </div>
@@ -83,8 +83,6 @@
             </div>
 
         @endforeach
-
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

@@ -14,7 +14,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -22,7 +22,7 @@
         <div class="form-group">
             {!! Form::label('rotacion_grupo_id', 'Rotacion Grupo ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('rotacion_grupo_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('rotacion_grupo_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('rotacion_grupo_id')?$errors->first('rotacion_grupo_id'):'' !!}
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
             {!! Form::label('usuario_id', 'Usuario ID', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('usuario_id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('usuario_id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('usuario_id')?$errors->first('usuario_id'):'' !!}
             </div>
         </div>

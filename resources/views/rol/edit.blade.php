@@ -13,7 +13,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -26,7 +26,6 @@
             </div>
         </div>
 
-
         <div class="form-group">
             {!! Form::label('privilegio', 'Privilegio', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
@@ -34,7 +33,6 @@
                 {!! $errors->has('privilegio_id')?$errors->first('escuela'):'' !!}
             </div>
         </div>
-
 
         <div class="form-group">
             {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}

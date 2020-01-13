@@ -13,7 +13,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -33,8 +33,6 @@
                 {!! $errors->has('rotacion_grupo_id')?$errors->first('rotacion_grupo_id'):'' !!}
             </div>
         </div>
-
-
     
         <div class="form-group">
             {!! Form::label('nota', 'Nota', ['class'=>'control-label col-md-2']) !!}

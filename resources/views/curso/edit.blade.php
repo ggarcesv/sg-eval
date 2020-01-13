@@ -13,7 +13,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="form-group">
             {!! Form::label('year', 'Año', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('year', null, ['class'=>'form-control']) !!}
+                {!! Form::number('year', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('year')?$errors->first('year'):'' !!}
             </div>
         </div>
@@ -53,7 +53,7 @@
         <div class="form-group">
             {!! Form::label('seccion', 'Sección', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('num_seccion', null, ['class'=>'form-control']) !!}
+                {!! Form::number('num_seccion', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('num_seccion')?$errors->first('num_seccion'):'' !!}
             </div>
         </div>

@@ -13,7 +13,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -37,7 +37,7 @@
         <div class="form-group">
             {!! Form::label('telefono', 'Telefono', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('telefono', null, ['class'=>'form-control']) !!}
+                {!! Form::number('telefono', null, ['min'=>'1', 'max'=>'11','class'=>'form-control']) !!}
                 {!! $errors->has('telefono')?$errors->first('telefono'):'' !!}
             </div>
         </div>

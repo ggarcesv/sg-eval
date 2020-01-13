@@ -14,7 +14,7 @@
         <div class="form-group">
             {!! Form::label('id', 'Id', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('id', null, ['class'=>'form-control']) !!}
+                {!! Form::number('id', null, ['class'=>'form-control']) !!}
                 {!! $errors->has('id')?$errors->first('id'):'' !!}
             </div>
         </div>
@@ -34,7 +34,6 @@
                 {!! $errors->has('privilegio')?$errors->first('privilegio'):'' !!}
             </div>
         </div>
-
 
         <div class="form-group">
             {!! Form::label('estado', 'Estado', ['class'=>'control-label col-md-2']) !!}
