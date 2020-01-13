@@ -22,7 +22,7 @@
         <div class="form-group">
             {!! Form::label('nombre', 'Nombre', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('nombre', null, ['class'=>'form-control']) !!}
+                {!! Form::text('nombre', null, ['maxlength'=>'50','class'=>'form-control']) !!}
                 {!! $errors->has('nombre')?$errors->first('nombre'):'' !!}
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
             {!! Form::label('ponderacion', 'Ponderación', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::number('ponderacion', null, ['class'=>'form-control']) !!}
+                {!! Form::number('ponderacion', null, ['min'=>'0', 'max'=>'100','class'=>'form-control']) !!}
                 {!! $errors->has('ponderacion')?$errors->first('ponderacion'):'' !!}
             </div>
         </div>

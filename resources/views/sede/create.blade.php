@@ -30,7 +30,7 @@
         <div class="form-group">
             {!! Form::label('direccion', 'Dirección', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::text('direccion', null, ['class'=>'form-control']) !!}
+                {!! Form::text('direccion', null, ['maxlength'=>'100','class'=>'form-control']) !!}
                 {!! $errors->has('direccion')?$errors->first('direccion'):'' !!}
             </div>
         </div>
@@ -38,7 +38,7 @@
         <div class="form-group">
             {!! Form::label('telefono', 'Telefono', ['class'=>'control-label col-md-2']) !!}
             <div class="col-md-3">
-                {!! Form::number('telefono', null, ['min'=>'1', 'max'=>'11','class'=>'form-control']) !!}
+            {!! Form::number('telefono', null, ['min'=>'0', 'max'=>'99999999999','class'=>'form-control']) !!}
                 {!! $errors->has('telefono')?$errors->first('telefono'):'' !!}
             </div>
         </div>

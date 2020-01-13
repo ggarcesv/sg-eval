@@ -1,13 +1,16 @@
 <?php
 
+Route::resource('/', 'LoginController');
+/*
 Route::get('/', function () {
-    return view('Main');
+    return view('Login');
 });
+
 
 Route::get('/login', function () {
     return view('Login');
 });
-
+*/
 
 // Sede
 Route::resource('config/sede', 'SedeController');
